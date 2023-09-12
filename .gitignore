@@ -28,3 +28,7 @@
 *.exe
 *.out
 *.app
+
+#others
+*.vs/
+*x64/
