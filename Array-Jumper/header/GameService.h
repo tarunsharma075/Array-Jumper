@@ -3,6 +3,12 @@
 class UIHandler;
 class GraphicHandler;
 
+enum class GameState
+{
+	SPLASH_SCREEN,
+	MAIN_MENU,
+};
+
 class GameService
 {
 private:
@@ -11,15 +17,16 @@ private:
 	sf::RenderWindow* game_window;
 	GraphicHandler* graphic_handler;
 	UIHandler* ui_handler;
+	GameState current_state;
 
-	void initialize();
+	void instantiateHandlers();
 
 	void ignite();
 	void update();
 	void render();
 
 	bool isRunning();
-	void initializeGameWindow();
+	void initialize();
 	void showSplashScreen();
 	void onDestroy();
 
@@ -29,6 +36,9 @@ public:
 	GameService();
 	virtual ~GameService();
 
+	void setGameState(GameState new_state);
+
 	GraphicHandler* getGraphicHandler();
 	UIHandler* getUIHandler();
+	GameState getGameState();
 };

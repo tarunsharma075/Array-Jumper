@@ -2,11 +2,20 @@
 #include "../header/GraphicHandler.h"
 #include "../header/UIHandler.h"
 
-GameService::GameService() { initialize(); }
+GameService::GameService() 
+{ 
+	graphic_handler = nullptr;
+	ui_handler = nullptr;
 
-GameService::~GameService() { onDestroy(); }
+	instantiateHandlers();
+}
 
-void GameService::initialize()
+GameService::~GameService() 
+{ 
+	onDestroy(); 
+}
+
+void GameService::instantiateHandlers()
 {
 	graphic_handler = new GraphicHandler();
 	ui_handler = new UIHandler();
@@ -14,8 +23,17 @@ void GameService::initialize()
 
 void GameService::ignite()
 {
-	initializeGameWindow();
+	initialize();
 	showSplashScreen();
+}
+
+void GameService::initialize()
+{
+	// Game Window will be created here.
+	game_window = graphic_handler->createGameWindow();
+	graphic_handler->setFrameRate(frame_rate);
+
+	ui_handler->initialize(this, game_window);
 }
 
 // Main Game Loop.
@@ -35,18 +53,15 @@ void GameService::render()
 	game_window->display();
 }
 
-bool GameService::isRunning() { return graphic_handler->isGameWindowOpen(); }
-
-void GameService::initializeGameWindow()
-{
-	// Game Window will be created here.
-	game_window = graphic_handler->createGameWindow();
-	graphic_handler->setFrameRate(frame_rate);
-
-	ui_handler->initialize(this, game_window);
+bool GameService::isRunning() 
+{ 
+	return graphic_handler->isGameWindowOpen(); 
 }
 
-void GameService::showSplashScreen() { ui_handler->setUIState(UIState::SPLASH_SCREEN); }
+void GameService::showSplashScreen() 
+{ 
+	setGameState(GameState::SPLASH_SCREEN); 
+}
 
 void GameService::onDestroy()
 {
@@ -54,6 +69,32 @@ void GameService::onDestroy()
 	delete(ui_handler);
 }
 
-GraphicHandler* GameService::getGraphicHandler() { return graphic_handler; }
+void GameService::setGameState(GameState new_state)
+{
+	current_state = new_state;
 
-UIHandler* GameService::getUIHandler() { return ui_handler; }
+	switch (current_state)
+	{
+	case GameState::SPLASH_SCREEN:
+		break;
+	case GameState::MAIN_MENU:
+		break;
+	default:
+		break;
+	}
+}
+
+GraphicHandler* GameService::getGraphicHandler() 
+{ 
+	return graphic_handler; 
+}
+
+UIHandler* GameService::getUIHandler() 
+{ 
+	return ui_handler; 
+}
+
+GameState GameService::getGameState()
+{
+	return current_state;
+}

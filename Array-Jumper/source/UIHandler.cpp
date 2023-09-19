@@ -36,17 +36,17 @@ void UIHandler::instantiateControllers()
 void UIHandler::initializeControllers()
 {
     main_menu_controller->initialize(game_window);
-    splash_screen_controller->initialize(this, game_window);
+    splash_screen_controller->initialize(game_window, game_service, this);
 }
 
 void UIHandler::updateUI()
 {
-	switch (current_state)
+	switch (game_service->getGameState())
 	{
-    case UIState::SPLASH_SCREEN:
+    case GameState::SPLASH_SCREEN:
         splash_screen_controller->update();
         break;
-	case UIState::MAIN_MENU:
+	case GameState::MAIN_MENU:
         main_menu_controller->update();
 		break;
 	default:
@@ -56,30 +56,13 @@ void UIHandler::updateUI()
 
 void UIHandler::render() 
 { 
-    switch (current_state)
+    switch (game_service->getGameState())
     {
-    case UIState::SPLASH_SCREEN:
+    case GameState::SPLASH_SCREEN:
         splash_screen_controller->render();
         break;
-    case UIState::MAIN_MENU:
+    case GameState::MAIN_MENU:
         main_menu_controller->render();
-        break;
-    default:
-        break;
-    }
-}
-
-void UIHandler::setUIState(UIState new_state)
-{
-    current_state = new_state;
-
-    switch (current_state)
-    {
-    case UIState::SPLASH_SCREEN:
-        splash_screen_controller->showSplashScreen();
-        break;
-    case UIState::MAIN_MENU:
-        main_menu_controller->showMainMenuScreen();
         break;
     default:
         break;

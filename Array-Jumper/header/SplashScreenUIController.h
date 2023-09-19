@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+class GameService;
 class UIHandler;
 
 class SplashScreenUIController
@@ -10,6 +11,7 @@ private:
 	const float logo_animation_time = 2.0f;
 	const float splash_screen_time = 6.0f;
 
+	GameService* game_service;
 	UIHandler* ui_handler;
 
 	sf::RenderWindow* game_window;
@@ -33,7 +35,7 @@ private:
 public:
 	SplashScreenUIController();
 
-	void initialize(UIHandler* ui_handler_instance, sf::RenderWindow* window_to_set);
+	void initialize(sf::RenderWindow* window_to_set, GameService* game_service_instance, UIHandler* ui_handler_instance);
 	void update();
 	void render();
 

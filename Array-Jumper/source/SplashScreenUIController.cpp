@@ -1,15 +1,18 @@
 #include "../header/SplashScreenUIController.h"
+#include "../header/GameService.h"
 #include "../header/UIHandler.h"
 
 SplashScreenUIController::SplashScreenUIController() 
 {
     game_window = nullptr;
+    game_service = nullptr;
     ui_handler = nullptr;
 }
 
-void SplashScreenUIController::initialize(UIHandler* ui_handler_instance, sf::RenderWindow* window_to_set)
+void SplashScreenUIController::initialize(sf::RenderWindow* window_to_set, GameService* game_service_instance, UIHandler* ui_handler_instance)
 {
     game_window = window_to_set;
+    game_service = game_service_instance;
     ui_handler = ui_handler_instance;
 
     initializeVariables();
@@ -90,7 +93,7 @@ void SplashScreenUIController::hideLogoWithFade()
 
 void SplashScreenUIController::logoAnimationComplete() 
 { 
-    ui_handler->setUIState(UIState::MAIN_MENU);
+    game_service->setGameState(GameState::MAIN_MENU);
 }
 
 void SplashScreenUIController::showSplashScreen()
