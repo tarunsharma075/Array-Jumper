@@ -9,7 +9,7 @@ GameService::~GameService() { onDestroy(); }
 void GameService::initialize()
 {
 	graphic_handler = new GraphicHandler();
-	ui_handler = new UIHandler(this, game_window);
+	ui_handler = new UIHandler();
 }
 
 void GameService::ignite()
@@ -43,7 +43,7 @@ void GameService::initializeGameWindow()
 	game_window = graphic_handler->createGameWindow();
 	graphic_handler->setFrameRate(frame_rate);
 
-	ui_handler->initialize(game_window);
+	ui_handler->initialize(this, game_window);
 }
 
 void GameService::showSplashScreen() { ui_handler->setUIState(UIState::SPLASH_SCREEN); }

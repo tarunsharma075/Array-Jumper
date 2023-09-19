@@ -25,6 +25,12 @@
     <ClCompile Include="source\GraphicHandler.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="source\SplashScreenUIController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MainMenuUIController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\GameService.h">
@@ -34,6 +40,12 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="header\GraphicHandler.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\SplashScreenUIController.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\MainMenuUIController.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

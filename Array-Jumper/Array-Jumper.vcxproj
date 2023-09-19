@@ -136,11 +136,15 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="source\GameService.cpp" />
     <ClCompile Include="source\GraphicHandler.cpp" />
+    <ClCompile Include="source\MainMenuUIController.cpp" />
+    <ClCompile Include="source\SplashScreenUIController.cpp" />
     <ClCompile Include="source\UIHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\GameService.h" />
     <ClInclude Include="header\GraphicHandler.h" />
+    <ClInclude Include="header\MainMenuUIController.h" />
+    <ClInclude Include="header\SplashScreenUIController.h" />
     <ClInclude Include="header\UIHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
