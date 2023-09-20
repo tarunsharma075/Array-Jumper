@@ -7,10 +7,8 @@ UIHandler::UIHandler()
 {
     game_service = nullptr;
     game_window = nullptr;
-    splash_screen_controller = nullptr;
-    main_menu_controller = nullptr;
 
-    instantiateControllers();
+    createControllers();
 }
 
 UIHandler::~UIHandler() 
@@ -19,18 +17,21 @@ UIHandler::~UIHandler()
     delete(main_menu_controller);
 }
 
+void UIHandler::createControllers()
+{
+    splash_screen_controller = nullptr;
+    main_menu_controller = nullptr;
+
+    splash_screen_controller = new SplashScreenUIController();
+    main_menu_controller = new MainMenuUIController();
+}
+
 void UIHandler::initialize(GameService* game_service_instance, sf::RenderWindow* window_to_set)
 {
     game_service = game_service_instance;
     game_window = window_to_set;
 
     initializeControllers();
-}
-
-void UIHandler::instantiateControllers()
-{
-    splash_screen_controller = new SplashScreenUIController();
-    main_menu_controller = new MainMenuUIController();
 }
 
 void UIHandler::initializeControllers()
