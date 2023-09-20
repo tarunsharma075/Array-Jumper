@@ -2,21 +2,15 @@
 #include "../header/GraphicHandler.h"
 #include "../header/UIHandler.h"
 
-GameService::GameService() 
-{ 
-	graphic_handler = nullptr;
-	ui_handler = nullptr;
+GameService::GameService()  { instantiateHandlers(); }
 
-	instantiateHandlers();
-}
-
-GameService::~GameService() 
-{ 
-	onDestroy(); 
-}
+GameService::~GameService()  { onDestroy(); }
 
 void GameService::instantiateHandlers()
 {
+	graphic_handler = nullptr;
+	ui_handler = nullptr;
+
 	graphic_handler = new GraphicHandler();
 	ui_handler = new UIHandler();
 }
@@ -53,15 +47,9 @@ void GameService::render()
 	game_window->display();
 }
 
-bool GameService::isRunning() 
-{ 
-	return graphic_handler->isGameWindowOpen(); 
-}
+bool GameService::isRunning() { return graphic_handler->isGameWindowOpen(); }
 
-void GameService::showSplashScreen() 
-{ 
-	setGameState(GameState::SPLASH_SCREEN); 
-}
+void GameService::showSplashScreen() { setGameState(GameState::SPLASH_SCREEN); }
 
 void GameService::onDestroy()
 {
@@ -84,17 +72,8 @@ void GameService::setGameState(GameState new_state)
 	}
 }
 
-GraphicHandler* GameService::getGraphicHandler() 
-{ 
-	return graphic_handler; 
-}
+GraphicHandler* GameService::getGraphicHandler() { return graphic_handler; }
 
-UIHandler* GameService::getUIHandler() 
-{ 
-	return ui_handler; 
-}
+UIHandler* GameService::getUIHandler() { return ui_handler; }
 
-GameState GameService::getGameState()
-{
-	return current_state;
-}
+GameState GameService::getGameState() { return current_state; }
