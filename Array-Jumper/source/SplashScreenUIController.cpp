@@ -33,15 +33,9 @@ void SplashScreenUIController::update()
     }
 }
 
-void SplashScreenUIController::render()
-{
-    game_window->draw(outscal_logo_sprite);
-}
+void SplashScreenUIController::render() { game_window->draw(outscal_logo_sprite); }
 
-void SplashScreenUIController::initializeVariables()
-{
-    elapsed_time = 0.0f;
-}
+void SplashScreenUIController::initializeVariables() { elapsed_time = 0.0f; }
 
 void SplashScreenUIController::initializeOutscalLogo()
 {
@@ -68,13 +62,9 @@ void SplashScreenUIController::setPositionToCenter()
 void SplashScreenUIController::updateLogo(float deltaTime)
 {
     if (elapsed_time <= 4.0f)
-    {
         showLogoWithFade();
-    }
     else
-    {
         hideLogoWithFade();
-    }
 }
 
 // Calculate the alpha value based on elapsed time (e.g., linear interpolation)
@@ -91,10 +81,7 @@ void SplashScreenUIController::hideLogoWithFade()
     outscal_logo_sprite.setColor(sf::Color(255, 255, 255, static_cast<sf::Uint8>(alpha * 255)));
 }
 
-void SplashScreenUIController::logoAnimationComplete() 
-{ 
-    game_service->setGameState(GameState::MAIN_MENU);
-}
+void SplashScreenUIController::logoAnimationComplete() { game_service->setGameState(GameState::MAIN_MENU); }
 
 void SplashScreenUIController::showSplashScreen()
 {

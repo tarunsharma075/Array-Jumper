@@ -1,9 +1,6 @@
 #include "../header/MainMenuUIController.h"
 
-MainMenuUIController::MainMenuUIController()
-{
-    game_window = nullptr;
-}
+MainMenuUIController::MainMenuUIController(){ game_window = nullptr;}
 
 void MainMenuUIController::initialize(sf::RenderWindow* window_to_set)
 {
@@ -12,20 +9,6 @@ void MainMenuUIController::initialize(sf::RenderWindow* window_to_set)
     initializeButtons();
 }
 
-void MainMenuUIController::update()
-{
-    if (pressedMouseButton()) handleButtonInteractions();
-}
-
-void MainMenuUIController::render()
-{
-    game_window->draw(background_sprite);
-    game_window->draw(play_button_sprite);
-    game_window->draw(instructions_button_sprite);
-    game_window->draw(quit_button_sprite);
-}
-
-// Load the background texture and sprite
 void MainMenuUIController::initializeBackgroundImage()
 {
     if (background_texture.loadFromFile("assets/textures/array_jumper_bg.png"))
@@ -91,6 +74,16 @@ void MainMenuUIController::positionButtons()
     quit_button_sprite.setPosition({ x_position, 900.f });
 }
 
+void MainMenuUIController::update() { if (pressedMouseButton()) handleButtonInteractions(); }
+
+void MainMenuUIController::render()
+{
+    game_window->draw(background_sprite);
+    game_window->draw(play_button_sprite);
+    game_window->draw(instructions_button_sprite);
+    game_window->draw(quit_button_sprite);
+}
+
 bool MainMenuUIController::pressedMouseButton() { return sf::Mouse::isButtonPressed(sf::Mouse::Left); }
 
 void MainMenuUIController::handleButtonInteractions()
@@ -98,19 +91,13 @@ void MainMenuUIController::handleButtonInteractions()
     sf::Vector2f mouse_position = sf::Vector2f(sf::Mouse::getPosition(*game_window));
 
     if (clickedButton(&play_button_sprite, mouse_position))
-    {
         printf("Clicked Play Button \n");
-    }
 
     if (clickedButton(&instructions_button_sprite, mouse_position))
-    {
         printf("Clicked Instruction Button \n");
-    }
 
     if (clickedButton(&quit_button_sprite, mouse_position))
-    {
         game_window->close();
-    }
 }
 
 bool MainMenuUIController::clickedButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position)
@@ -118,6 +105,4 @@ bool MainMenuUIController::clickedButton(sf::Sprite* button_sprite, sf::Vector2f
     return button_sprite->getGlobalBounds().contains(mouse_position);
 }
 
-void MainMenuUIController::showMainMenuScreen()
-{
-}
+void MainMenuUIController::showMainMenuScreen() { }
