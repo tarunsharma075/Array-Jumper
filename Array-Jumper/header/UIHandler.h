@@ -15,7 +15,7 @@ private:
 
 	sf::RenderWindow* game_window;
 
-	void instantiateControllers();
+	void createControllers();
 	void initializeControllers();
 
 public:
