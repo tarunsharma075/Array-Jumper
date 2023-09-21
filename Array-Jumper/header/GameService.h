@@ -1,8 +1,9 @@
 #pragma once
 #include <SFML/Graphics/RenderWindow.hpp>
 
-class UIHandler;
 class GraphicHandler;
+class UIHandler;
+class SoundHandler;
 
 enum class GameState
 {
@@ -21,6 +22,7 @@ private:
 	sf::RenderWindow* game_window;
 	GraphicHandler* graphic_handler;
 	UIHandler* ui_handler;
+	SoundHandler* sound_handler;
 
 	void createHandlers();
 	void initialize();

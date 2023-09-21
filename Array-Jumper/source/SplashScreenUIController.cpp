@@ -1,14 +1,17 @@
 #include "../header/SplashScreenUIController.h"
 #include "../header/GameService.h"
+#include "../header/SoundHandler.h"
 
 SplashScreenUIController::SplashScreenUIController() 
 {
     game_window = nullptr;
+    sound_handler = nullptr;
 }
 
-void SplashScreenUIController::initialize(sf::RenderWindow* window_to_set)
+void SplashScreenUIController::initialize(sf::RenderWindow* game_window_instance, SoundHandler* sound_handler_instance)
 {
-    game_window = window_to_set;
+    game_window = game_window_instance;
+    sound_handler = sound_handler_instance;
 
     initializeVariables();
     initializeOutscalLogo();
@@ -76,7 +79,11 @@ void SplashScreenUIController::hideLogoWithFade()
     outscal_logo_sprite.setColor(sf::Color(255, 255, 255, static_cast<sf::Uint8>(alpha * 255)));
 }
 
-void SplashScreenUIController::logoAnimationComplete() { GameService::setGameState(GameState::MAIN_MENU); }
+void SplashScreenUIController::logoAnimationComplete() 
+{ 
+    sound_handler->playBackgroundMusic();
+    GameService::setGameState(GameState::MAIN_MENU); 
+}
 
 void SplashScreenUIController::showSplashScreen()
 {

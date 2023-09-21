@@ -31,6 +31,9 @@
     <ClCompile Include="source\MainMenuUIController.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="source\SoundHandler.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\GameService.h">
@@ -46,6 +49,9 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="header\MainMenuUIController.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\SoundHandler.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

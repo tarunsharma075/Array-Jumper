@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+class SoundHandler;
+
 class SplashScreenUIController
 {
 private:
@@ -8,6 +10,7 @@ private:
 	const float logo_animation_time = 2.0f;
 	const float splash_screen_time = 6.0f;
 
+	SoundHandler* sound_handler;
 	sf::RenderWindow* game_window;
 	sf::Texture outscal_logo_texture;
 	sf::Sprite outscal_logo_sprite;
@@ -29,7 +32,7 @@ private:
 public:
 	SplashScreenUIController();
 
-	void initialize(sf::RenderWindow* window_to_set);
+	void initialize(sf::RenderWindow* game_window_instance, SoundHandler* sound_handler_instance);
 	void update();
 	void render();
 

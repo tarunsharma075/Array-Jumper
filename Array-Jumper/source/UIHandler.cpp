@@ -24,17 +24,18 @@ void UIHandler::createControllers()
     main_menu_controller = new MainMenuUIController();
 }
 
-void UIHandler::initialize(sf::RenderWindow* window_to_set)
+void UIHandler::initialize(sf::RenderWindow* game_window_instance, SoundHandler* sound_handler_instance)
 {
-    game_window = window_to_set;
+    game_window = game_window_instance;
+    sound_handler = sound_handler_instance;
 
     initializeControllers();
 }
 
 void UIHandler::initializeControllers()
 {
-    main_menu_controller->initialize(game_window);
-    splash_screen_controller->initialize(game_window);
+    main_menu_controller->initialize(game_window, sound_handler);
+    splash_screen_controller->initialize(game_window, sound_handler);
 }
 
 void UIHandler::updateUI()

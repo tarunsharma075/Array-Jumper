@@ -1,6 +1,7 @@
 #include "../header/GameService.h"
 #include "../header/GraphicHandler.h"
 #include "../header/UIHandler.h"
+#include "../header/SoundHandler.h"
 
 GameState GameService::current_state = GameState::BOOT;
 
@@ -8,6 +9,7 @@ GameService::GameService()
 { 
 	graphic_handler = nullptr;
 	ui_handler = nullptr;
+	sound_handler = nullptr;
 	game_window = nullptr;
 
 	createHandlers();
@@ -28,6 +30,7 @@ void GameService::createHandlers()
 {
 	graphic_handler = new GraphicHandler();
 	ui_handler = new UIHandler();
+	sound_handler = new SoundHandler();
 }
 
 void GameService::initialize()
@@ -36,7 +39,8 @@ void GameService::initialize()
 	game_window = graphic_handler->createGameWindow();
 	graphic_handler->setFrameRate(frame_rate);
 
-	ui_handler->initialize(game_window);
+	sound_handler->initialize();
+	ui_handler->initialize(game_window, sound_handler);
 }
 
 // Main Game Loop.
@@ -58,12 +62,16 @@ void GameService::render()
 
 bool GameService::isRunning() { return graphic_handler->isGameWindowOpen(); }
 
-void GameService::showSplashScreen() { setGameState(GameState::SPLASH_SCREEN); }
+void GameService::showSplashScreen() 
+{ 
+	setGameState(GameState::SPLASH_SCREEN); 
+}
 
 void GameService::onDestroy()
 {
-	delete(graphic_handler);
 	delete(ui_handler);
+	delete(sound_handler);
+	delete(graphic_handler);
 }
 
 void GameService::setGameState(GameState new_state) 

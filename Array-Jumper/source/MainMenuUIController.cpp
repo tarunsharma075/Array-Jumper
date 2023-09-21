@@ -1,13 +1,15 @@
 #include "../header/MainMenuUIController.h"
+#include "../header/SoundHandler.h"
 
 MainMenuUIController::MainMenuUIController()
 { 
     game_window = nullptr;
 }
 
-void MainMenuUIController::initialize(sf::RenderWindow* window_to_set)
+void MainMenuUIController::initialize(sf::RenderWindow* game_window_instance, SoundHandler* sound_handler_instance)
 {
-    game_window = window_to_set;
+    game_window = game_window_instance;
+    sound_handler = sound_handler_instance;
     initializeBackgroundImage();
     initializeButtons();
 }
@@ -77,7 +79,18 @@ void MainMenuUIController::positionButtons()
     quit_button_sprite.setPosition({ x_position, 900.f });
 }
 
-void MainMenuUIController::update() { if (pressedMouseButton()) handleButtonInteractions(); }
+void MainMenuUIController::update() 
+{
+    if (pressedMouseButton())
+    {
+        handleButtonInteractions();
+        mouse_button_pressed = true;
+    }
+    else
+    {
+        mouse_button_pressed = false;
+    }
+}
 
 void MainMenuUIController::render()
 {
@@ -91,16 +104,20 @@ bool MainMenuUIController::pressedMouseButton() { return sf::Mouse::isButtonPres
 
 void MainMenuUIController::handleButtonInteractions()
 {
+    if (mouse_button_pressed) return;
+
     sf::Vector2f mouse_position = sf::Vector2f(sf::Mouse::getPosition(*game_window));
 
     if (clickedButton(&play_button_sprite, mouse_position))
     {
         printf("Clicked Play Button \n");
+        sound_handler->playSound(SoundType::BUTTON_CLICK);
     }
 
     if (clickedButton(&instructions_button_sprite, mouse_position))
     {
         printf("Clicked Instruction Button \n");
+        sound_handler->playSound(SoundType::BUTTON_CLICK);
     }
 
     if (clickedButton(&quit_button_sprite, mouse_position))

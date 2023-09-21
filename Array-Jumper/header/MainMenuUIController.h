@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+class SoundHandler;
+
 class MainMenuUIController
 {
 private:
@@ -9,7 +11,10 @@ private:
 	const float button_width = 400.f;
 	const float button_height = 140.f;
 
+	bool mouse_button_pressed = false;
+
 	sf::RenderWindow* game_window;
+	SoundHandler* sound_handler;
 
 	// Textures:
 	sf::Texture background_texture;
@@ -42,7 +47,7 @@ private:
 public:
 	MainMenuUIController();
 
-	void initialize(sf::RenderWindow* window_to_set);
+	void initialize(sf::RenderWindow* game_window_instance, SoundHandler* sound_handler_instance);
 	void update();
 	void render();
 };
