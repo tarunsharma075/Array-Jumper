@@ -23,6 +23,5 @@ public:
 	void updateGraphics();
 	void render();
 	bool isGameWindowOpen();
-	sf::RenderWindow* getWindow();
 	void setFrameRate(int);
 };

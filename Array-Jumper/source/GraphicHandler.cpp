@@ -23,5 +23,3 @@ void GraphicHandler::updateGraphics() { }
 void GraphicHandler::render() { }
 
 bool GraphicHandler::isGameWindowOpen() { return game_window->isOpen(); }
-
-sf::RenderWindow* GraphicHandler::getWindow() { return game_window; }

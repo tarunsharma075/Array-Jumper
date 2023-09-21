@@ -5,7 +5,8 @@
 
 UIHandler::UIHandler()
 {
-    game_service = nullptr;
+    splash_screen_controller = nullptr;
+    main_menu_controller = nullptr;
     game_window = nullptr;
 
     createControllers();
@@ -19,16 +20,12 @@ UIHandler::~UIHandler()
 
 void UIHandler::createControllers()
 {
-    splash_screen_controller = nullptr;
-    main_menu_controller = nullptr;
-
     splash_screen_controller = new SplashScreenUIController();
     main_menu_controller = new MainMenuUIController();
 }
 
-void UIHandler::initialize(GameService* game_service_instance, sf::RenderWindow* window_to_set)
+void UIHandler::initialize(sf::RenderWindow* window_to_set)
 {
-    game_service = game_service_instance;
     game_window = window_to_set;
 
     initializeControllers();
@@ -37,12 +34,12 @@ void UIHandler::initialize(GameService* game_service_instance, sf::RenderWindow*
 void UIHandler::initializeControllers()
 {
     main_menu_controller->initialize(game_window);
-    splash_screen_controller->initialize(game_window, game_service, this);
+    splash_screen_controller->initialize(game_window);
 }
 
 void UIHandler::updateUI()
 {
-	switch (game_service->getGameState())
+	switch (GameService::getGameState())
 	{
     case GameState::SPLASH_SCREEN:
         splash_screen_controller->update();
@@ -57,7 +54,7 @@ void UIHandler::updateUI()
 
 void UIHandler::render() 
 { 
-    switch (game_service->getGameState())
+    switch (GameService::getGameState())
     {
     case GameState::SPLASH_SCREEN:
         splash_screen_controller->render();

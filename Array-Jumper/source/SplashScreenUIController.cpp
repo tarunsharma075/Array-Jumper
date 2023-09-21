@@ -1,19 +1,14 @@
 #include "../header/SplashScreenUIController.h"
 #include "../header/GameService.h"
-#include "../header/UIHandler.h"
 
 SplashScreenUIController::SplashScreenUIController() 
 {
     game_window = nullptr;
-    game_service = nullptr;
-    ui_handler = nullptr;
 }
 
-void SplashScreenUIController::initialize(sf::RenderWindow* window_to_set, GameService* game_service_instance, UIHandler* ui_handler_instance)
+void SplashScreenUIController::initialize(sf::RenderWindow* window_to_set)
 {
     game_window = window_to_set;
-    game_service = game_service_instance;
-    ui_handler = ui_handler_instance;
 
     initializeVariables();
     initializeOutscalLogo();
@@ -81,7 +76,7 @@ void SplashScreenUIController::hideLogoWithFade()
     outscal_logo_sprite.setColor(sf::Color(255, 255, 255, static_cast<sf::Uint8>(alpha * 255)));
 }
 
-void SplashScreenUIController::logoAnimationComplete() { game_service->setGameState(GameState::MAIN_MENU); }
+void SplashScreenUIController::logoAnimationComplete() { GameService::setGameState(GameState::MAIN_MENU); }
 
 void SplashScreenUIController::showSplashScreen()
 {

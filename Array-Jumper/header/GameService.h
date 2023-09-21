@@ -1,10 +1,12 @@
 #pragma once
 #include <SFML/Graphics/RenderWindow.hpp>
+
 class UIHandler;
 class GraphicHandler;
 
 enum class GameState
 {
+	BOOT,
 	SPLASH_SCREEN,
 	MAIN_MENU,
 };
@@ -14,31 +16,26 @@ class GameService
 private:
 	const int frame_rate = 60;
 
+	static GameState current_state;
+
 	sf::RenderWindow* game_window;
 	GraphicHandler* graphic_handler;
 	UIHandler* ui_handler;
-	GameState current_state;
 
-	void instantiateHandlers();
-
-	void ignite();
-	void update();
-	void render();
-
-	bool isRunning();
+	void createHandlers();
 	void initialize();
 	void showSplashScreen();
 	void onDestroy();
 
 public:
-	friend int main();
-
 	GameService();
 	virtual ~GameService();
 
-	void setGameState(GameState new_state);
+	void ignite();
+	void update();
+	void render();
+	bool isRunning();
 
-	GraphicHandler* getGraphicHandler();
-	UIHandler* getUIHandler();
-	GameState getGameState();
+	static void setGameState(GameState new_state);
+	static GameState getGameState();
 };

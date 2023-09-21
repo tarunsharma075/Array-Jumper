@@ -45,6 +45,4 @@ public:
 	void initialize(sf::RenderWindow* window_to_set);
 	void update();
 	void render();
-
-	void showMainMenuScreen();
 };

@@ -1,6 +1,9 @@
 #include "../header/MainMenuUIController.h"
 
-MainMenuUIController::MainMenuUIController(){ game_window = nullptr;}
+MainMenuUIController::MainMenuUIController()
+{ 
+    game_window = nullptr;
+}
 
 void MainMenuUIController::initialize(sf::RenderWindow* window_to_set)
 {
@@ -91,18 +94,22 @@ void MainMenuUIController::handleButtonInteractions()
     sf::Vector2f mouse_position = sf::Vector2f(sf::Mouse::getPosition(*game_window));
 
     if (clickedButton(&play_button_sprite, mouse_position))
+    {
         printf("Clicked Play Button \n");
+    }
 
     if (clickedButton(&instructions_button_sprite, mouse_position))
+    {
         printf("Clicked Instruction Button \n");
+    }
 
     if (clickedButton(&quit_button_sprite, mouse_position))
+    {
         game_window->close();
+    }
 }
 
 bool MainMenuUIController::clickedButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position)
 {
     return button_sprite->getGlobalBounds().contains(mouse_position);
 }
-
-void MainMenuUIController::showMainMenuScreen() { }
