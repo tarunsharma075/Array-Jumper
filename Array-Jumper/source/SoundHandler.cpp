@@ -10,7 +10,7 @@ void SoundHandler::initialize()
 
 void SoundHandler::loadBackgroundMusicFromFile()
 {
-	if (!background_music.openFromFile("assets/sounds/background_music.wav"))
+	if (!background_music.openFromFile("assets/sounds/background_music.mp3"))
 		printf("Error loading background music file");
 }
 
