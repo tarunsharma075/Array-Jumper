@@ -1,10 +1,7 @@
 #include "../header/MainMenuUIController.h"
 #include "../header/SoundHandler.h"
 
-MainMenuUIController::MainMenuUIController()
-{ 
-    game_window = nullptr;
-}
+MainMenuUIController::MainMenuUIController() { game_window = nullptr; }
 
 void MainMenuUIController::initialize(sf::RenderWindow* game_window_instance, SoundHandler* sound_handler_instance)
 {
@@ -121,9 +118,7 @@ void MainMenuUIController::handleButtonInteractions()
     }
 
     if (clickedButton(&quit_button_sprite, mouse_position))
-    {
         game_window->close();
-    }
 }
 
 bool MainMenuUIController::clickedButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position)

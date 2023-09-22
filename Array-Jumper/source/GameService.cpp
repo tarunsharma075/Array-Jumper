@@ -15,10 +15,7 @@ GameService::GameService()
 	createHandlers();
 }
 
-GameService::~GameService()  
-{
-	onDestroy(); 
-}
+GameService::~GameService() { onDestroy(); }
 
 void GameService::ignite()
 {
@@ -62,10 +59,7 @@ void GameService::render()
 
 bool GameService::isRunning() { return graphic_handler->isGameWindowOpen(); }
 
-void GameService::showSplashScreen() 
-{ 
-	setGameState(GameState::SPLASH_SCREEN); 
-}
+void GameService::showSplashScreen() { setGameState(GameState::SPLASH_SCREEN); }
 
 void GameService::onDestroy()
 {
@@ -74,9 +68,6 @@ void GameService::onDestroy()
 	delete(graphic_handler);
 }
 
-void GameService::setGameState(GameState new_state) 
-{
-	current_state = new_state;
-}
+void GameService::setGameState(GameState new_state) { current_state = new_state; }
 
 GameState GameService::getGameState() { return current_state; }

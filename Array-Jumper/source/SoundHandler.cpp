@@ -1,6 +1,6 @@
 #include "../header/SoundHandler.h"
 
-SoundHandler::SoundHandler() { }
+SoundHandler::SoundHandler() = default;
 
 void SoundHandler::initialize()
 {
@@ -11,17 +11,13 @@ void SoundHandler::initialize()
 void SoundHandler::loadBackgroundMusicFromFile()
 {
 	if (!background_music.openFromFile("assets/sounds/background_music.wav"))
-	{
 		printf("Error loading background music file");
-	}
 }
 
 void SoundHandler::loadSoundFromFile()
 {
 	if (!buffer_button_click.loadFromFile("assets/sounds/button_click_sound.wav"))
-	{
 		printf("Error loading background music file");
-	}
 }
 
 void SoundHandler::playSound(SoundType soundType)
