@@ -20,8 +20,6 @@ public:
 	~GraphicHandler();
 
 	sf::RenderWindow* createGameWindow();
-	void updateGraphics();
-	void render();
 	bool isGameWindowOpen();
 	void setFrameRate(int);
 };

@@ -18,8 +18,5 @@ void GraphicHandler::configureVideoMode()
 
 void GraphicHandler::setFrameRate(int frame_rate_to_set) { game_window->setFramerateLimit(frame_rate_to_set); }
 
-void GraphicHandler::updateGraphics() { }
-
-void GraphicHandler::render() { }
 
 bool GraphicHandler::isGameWindowOpen() { return game_window->isOpen(); }

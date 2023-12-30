@@ -43,17 +43,13 @@ void GameService::initialize()
 // Main Game Loop.
 void GameService::update()
 {
-	graphic_handler->updateGraphics();
 	ui_handler->updateUI();
 }
 
 void GameService::render()
 {
 	game_window->clear();
-
-	graphic_handler->render();
 	ui_handler->render();
-
 	game_window->display();
 }
 
