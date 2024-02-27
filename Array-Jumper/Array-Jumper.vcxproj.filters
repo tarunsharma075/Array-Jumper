@@ -16,42 +16,42 @@
     <ClCompile Include="main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GameService.cpp">
+    <ClCompile Include="source\Main\GameService.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="source\UIHandler.cpp">
+    <ClCompile Include="source\UI\UIHandler.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GraphicHandler.cpp">
+    <ClCompile Include="source\Graphics\GraphicHandler.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="source\SplashScreenUIController.cpp">
+    <ClCompile Include="source\UI\SplashScreen\SplashScreenUIController.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="source\MainMenuUIController.cpp">
+    <ClCompile Include="source\UI\MainMenu\MainMenuUIController.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="source\SoundHandler.cpp">
+    <ClCompile Include="source\Sound\SoundHandler.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header\GameService.h">
+    <ClInclude Include="header\Main\GameService.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="header\UIHandler.h">
+    <ClInclude Include="header\UI\UIHandler.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="header\GraphicHandler.h">
+    <ClInclude Include="header\Graphics\GraphicHandler.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="header\SplashScreenUIController.h">
+    <ClInclude Include="header\UI\SplashScreen\SplashScreenUIController.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="header\MainMenuUIController.h">
+    <ClInclude Include="header\UI\MainMenu\MainMenuUIController.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="header\SoundHandler.h">
+    <ClInclude Include="header\Sound\SoundHandler.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

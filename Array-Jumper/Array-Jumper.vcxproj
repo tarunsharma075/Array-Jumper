@@ -134,20 +134,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="source\SoundHandler.cpp" />
-    <ClCompile Include="source\GameService.cpp" />
-    <ClCompile Include="source\GraphicHandler.cpp" />
-    <ClCompile Include="source\MainMenuUIController.cpp" />
-    <ClCompile Include="source\SplashScreenUIController.cpp" />
-    <ClCompile Include="source\UIHandler.cpp" />
+    <ClCompile Include="source\Sound\SoundHandler.cpp" />
+    <ClCompile Include="source\Main\GameService.cpp" />
+    <ClCompile Include="source\Graphics\GraphicHandler.cpp" />
+    <ClCompile Include="source\UI\MainMenu\MainMenuUIController.cpp" />
+    <ClCompile Include="source\UI\SplashScreen\SplashScreenUIController.cpp" />
+    <ClCompile Include="source\UI\UIHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header\SoundHandler.h" />
-    <ClInclude Include="header\GameService.h" />
-    <ClInclude Include="header\GraphicHandler.h" />
-    <ClInclude Include="header\MainMenuUIController.h" />
-    <ClInclude Include="header\SplashScreenUIController.h" />
-    <ClInclude Include="header\UIHandler.h" />
+    <ClInclude Include="header\Sound\SoundHandler.h" />
+    <ClInclude Include="header\Main\GameService.h" />
+    <ClInclude Include="header\Graphics\GraphicHandler.h" />
+    <ClInclude Include="header\UI\MainMenu\MainMenuUIController.h" />
+    <ClInclude Include="header\UI\SplashScreen\SplashScreenUIController.h" />
+    <ClInclude Include="header\UI\UIHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
