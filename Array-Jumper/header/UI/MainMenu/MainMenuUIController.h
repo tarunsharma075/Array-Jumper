@@ -1,13 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-#include "../../header/Sound/SoundHandler.h"
+#include "../../header/Sound/SoundService.h"
 
 namespace UI
 {
 	namespace MainMenu
 	{
-		//class SoundHandler;
+		//class SoundService;
 
 		class MainMenuUIController
 		{
@@ -20,7 +20,7 @@ namespace UI
 			bool mouse_button_pressed = false;
 
 			sf::RenderWindow* game_window;
-			Sound::SoundHandler* sound_handler;
+			Sound::SoundService* sound_service;
 
 			// Textures:
 			sf::Texture background_texture;
@@ -53,7 +53,7 @@ namespace UI
 		public:
 			MainMenuUIController();
 
-			void initialize(sf::RenderWindow* game_window_instance, Sound::SoundHandler* sound_handler_instance);
+			void initialize(sf::RenderWindow* game_window_instance, Sound::SoundService* sound_service_instance);
 			void update();
 			void render();
 		};

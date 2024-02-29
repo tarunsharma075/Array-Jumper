@@ -8,10 +8,10 @@ namespace UI
         using namespace Sound;
         MainMenuUIController::MainMenuUIController() { game_window = nullptr; }
 
-        void MainMenuUIController::initialize(sf::RenderWindow* game_window_instance, SoundHandler* sound_handler_instance)
+        void MainMenuUIController::initialize(sf::RenderWindow* game_window_instance, SoundService* sound_service_instance)
         {
             game_window = game_window_instance;
-            sound_handler = sound_handler_instance;
+            sound_service = sound_service_instance;
             initializeBackgroundImage();
             initializeButtons();
         }
@@ -113,13 +113,13 @@ namespace UI
             if (clickedButton(&play_button_sprite, mouse_position))
             {
                 printf("Clicked Play Button \n");
-                sound_handler->playSound(SoundType::BUTTON_CLICK);
+                sound_service->playSound(SoundType::BUTTON_CLICK);
             }
 
             if (clickedButton(&instructions_button_sprite, mouse_position))
             {
                 printf("Clicked Instruction Button \n");
-                sound_handler->playSound(SoundType::BUTTON_CLICK);
+                sound_service->playSound(SoundType::BUTTON_CLICK);
             }
 
             if (clickedButton(&quit_button_sprite, mouse_position))

@@ -134,20 +134,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="source\Sound\SoundHandler.cpp" />
+    <ClCompile Include="source\Sound\SoundService.cpp" />
     <ClCompile Include="source\Main\GameService.cpp" />
-    <ClCompile Include="source\Graphics\GraphicHandler.cpp" />
+    <ClCompile Include="source\Graphics\GraphicService.cpp" />
     <ClCompile Include="source\UI\MainMenu\MainMenuUIController.cpp" />
     <ClCompile Include="source\UI\SplashScreen\SplashScreenUIController.cpp" />
-    <ClCompile Include="source\UI\UIHandler.cpp" />
+    <ClCompile Include="source\UI\UIService.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header\Sound\SoundHandler.h" />
+    <ClInclude Include="header\Sound\SoundService.h" />
     <ClInclude Include="header\Main\GameService.h" />
-    <ClInclude Include="header\Graphics\GraphicHandler.h" />
+    <ClInclude Include="header\Graphics\GraphicService.h" />
     <ClInclude Include="header\UI\MainMenu\MainMenuUIController.h" />
     <ClInclude Include="header\UI\SplashScreen\SplashScreenUIController.h" />
-    <ClInclude Include="header\UI\UIHandler.h" />
+    <ClInclude Include="header\UI\UIService.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

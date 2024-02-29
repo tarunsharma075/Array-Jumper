@@ -13,13 +13,13 @@ namespace UI
         SplashScreenUIController::SplashScreenUIController()
         {
             game_window = nullptr;
-            sound_handler = nullptr;
+            sound_service = nullptr;
         }
 
-        void SplashScreenUIController::initialize(sf::RenderWindow* game_window_instance, Sound::SoundHandler* sound_handler_instance)
+        void SplashScreenUIController::initialize(sf::RenderWindow* game_window_instance, Sound::SoundService* sound_service_instance)
         {
             game_window = game_window_instance;
-            sound_handler = sound_handler_instance;
+            sound_service = sound_service_instance;
 
             initializeVariables();
             initializeOutscalLogo();
@@ -89,7 +89,7 @@ namespace UI
 
         void SplashScreenUIController::logoAnimationComplete()
         {
-            sound_handler->playBackgroundMusic();
+            sound_service->playBackgroundMusic();
             GameService::setGameState(GameState::MAIN_MENU);
         }
 

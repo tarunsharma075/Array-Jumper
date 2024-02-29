@@ -19,10 +19,10 @@
     <ClCompile Include="source\Main\GameService.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="source\UI\UIHandler.cpp">
+    <ClCompile Include="source\UI\UIService.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="source\Graphics\GraphicHandler.cpp">
+    <ClCompile Include="source\Graphics\GraphicService.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="source\UI\SplashScreen\SplashScreenUIController.cpp">
@@ -31,7 +31,7 @@
     <ClCompile Include="source\UI\MainMenu\MainMenuUIController.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="source\Sound\SoundHandler.cpp">
+    <ClCompile Include="source\Sound\SoundService.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -39,10 +39,10 @@
     <ClInclude Include="header\Main\GameService.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="header\UI\UIHandler.h">
+    <ClInclude Include="header\UI\UIService.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="header\Graphics\GraphicHandler.h">
+    <ClInclude Include="header\Graphics\GraphicService.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="header\UI\SplashScreen\SplashScreenUIController.h">
@@ -51,7 +51,7 @@
     <ClInclude Include="header\UI\MainMenu\MainMenuUIController.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="header\Sound\SoundHandler.h">
+    <ClInclude Include="header\Sound\SoundService.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

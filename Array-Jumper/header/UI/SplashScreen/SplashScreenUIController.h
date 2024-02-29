@@ -1,12 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "../../header/Sound/SoundHandler.h"
+#include "../../header/Sound/SoundService.h"
 
 namespace UI
 {
 	namespace SplashScreen
 	{
-		/*class SoundHandler;*/
+		/*class SoundService;*/
 
 		class SplashScreenUIController
 		{
@@ -15,7 +15,7 @@ namespace UI
 			const float logo_animation_time = 2.0f;
 			const float splash_screen_time = 6.0f;
 
-			Sound::SoundHandler* sound_handler;
+			Sound::SoundService* sound_service;
 			sf::RenderWindow* game_window;
 			sf::Texture outscal_logo_texture;
 			sf::Sprite outscal_logo_sprite;
@@ -37,7 +37,7 @@ namespace UI
 		public:
 			SplashScreenUIController();
 
-			void initialize(sf::RenderWindow* game_window_instance, Sound::SoundHandler* sound_handler_instance);
+			void initialize(sf::RenderWindow* game_window_instance, Sound::SoundService* sound_service_instance);
 			void update();
 			void render();
 

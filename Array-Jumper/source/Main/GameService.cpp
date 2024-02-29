@@ -10,12 +10,12 @@ namespace Main
 
 	GameService::GameService()
 	{
-		graphic_handler = nullptr;
-		ui_handler = nullptr;
-		sound_handler = nullptr;
+		graphic_service = nullptr;
+		ui_service = nullptr;
+		sound_service = nullptr;
 		game_window = nullptr;
 
-		createHandlers();
+		createServices();
 	}
 
 	GameService::~GameService() { onDestroy(); }
@@ -26,45 +26,45 @@ namespace Main
 		showSplashScreen();
 	}
 
-	void GameService::createHandlers()
+	void GameService::createServices()
 	{
-		graphic_handler = new GraphicHandler();
-		ui_handler = new UIHandler();
-		sound_handler = new SoundHandler();
+		graphic_service = new GraphicService();
+		ui_service = new UIService();
+		sound_service = new SoundService();
 	}
 
 	void GameService::initialize()
 	{
 		// Game Window will be created here.
-		game_window = graphic_handler->createGameWindow();
-		graphic_handler->setFrameRate(frame_rate);
+		game_window = graphic_service->createGameWindow();
+		graphic_service->setFrameRate(frame_rate);
 
-		sound_handler->initialize();
-		ui_handler->initialize(game_window, sound_handler);
+		sound_service->initialize();
+		ui_service->initialize(game_window, sound_service);
 	}
 
 	// Main Game Loop.
 	void GameService::update()
 	{
-		ui_handler->updateUI();
+		ui_service->updateUI();
 	}
 
 	void GameService::render()
 	{
 		game_window->clear();
-		ui_handler->render();
+		ui_service->render();
 		game_window->display();
 	}
 
-	bool GameService::isRunning() { return graphic_handler->isGameWindowOpen(); }
+	bool GameService::isRunning() { return graphic_service->isGameWindowOpen(); }
 
 	void GameService::showSplashScreen() { setGameState(GameState::SPLASH_SCREEN); }
 
 	void GameService::onDestroy()
 	{
-		delete(ui_handler);
-		delete(sound_handler);
-		delete(graphic_handler);
+		delete(ui_service);
+		delete(sound_service);
+		delete(graphic_service);
 	}
 
 	void GameService::setGameState(GameState new_state) { current_state = new_state; }

@@ -1,4 +1,4 @@
-#include "../../header/UI/UIHandler.h"
+#include "../../header/UI/UIService.h"
 #include "../../header/Main/GameService.h"
 
 
@@ -10,7 +10,7 @@ namespace UI
     using namespace MainMenu;
     using namespace Sound;
 
-    UIHandler::UIHandler()
+    UIService::UIService()
     {
         splash_screen_controller = nullptr;
         main_menu_controller = nullptr;
@@ -19,33 +19,33 @@ namespace UI
         createControllers();
     }
 
-    UIHandler::~UIHandler()
+    UIService::~UIService()
     {
         delete(splash_screen_controller);
         delete(main_menu_controller);
     }
 
-    void UIHandler::createControllers()
+    void UIService::createControllers()
     {
         splash_screen_controller = new SplashScreenUIController();
         main_menu_controller = new MainMenuUIController();
     }
 
-    void UIHandler::initialize(sf::RenderWindow* game_window_instance, SoundHandler* sound_handler_instance)
+    void UIService::initialize(sf::RenderWindow* game_window_instance, SoundService* sound_service_instance)
     {
         game_window = game_window_instance;
-        sound_handler = sound_handler_instance;
+        sound_service = sound_service_instance;
 
         initializeControllers();
     }
 
-    void UIHandler::initializeControllers()
+    void UIService::initializeControllers()
     {
-        main_menu_controller->initialize(game_window, sound_handler);
-        splash_screen_controller->initialize(game_window, sound_handler);
+        main_menu_controller->initialize(game_window, sound_service);
+        splash_screen_controller->initialize(game_window, sound_service);
     }
 
-    void UIHandler::updateUI()
+    void UIService::updateUI()
     {
         switch (GameService::getGameState())
         {
@@ -60,7 +60,7 @@ namespace UI
         }
     }
 
-    void UIHandler::render()
+    void UIService::render()
     {
         switch (GameService::getGameState())
         {

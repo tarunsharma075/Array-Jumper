@@ -1,16 +1,16 @@
 #pragma once
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "../../header/Graphics/GraphicHandler.h"
-#include "../../header/UI/UIHandler.h"
-#include "../../header/Sound/SoundHandler.h"
+#include "../../header/Graphics/GraphicService.h"
+#include "../../header/UI/UIService.h"
+#include "../../header/Sound/SoundService.h"
 
 
 namespace Main
 {
-	/*class GraphicHandler;
-	class UIHandler;
-	class SoundHandler;*/
+	/*class GraphicService;
+	class UIService;
+	class SoundService;*/
 
 	enum class GameState
 	{
@@ -27,11 +27,11 @@ namespace Main
 		static GameState current_state;
 
 		sf::RenderWindow* game_window;
-		Graphics::GraphicHandler* graphic_handler;
-		UI::UIHandler* ui_handler;
-		Sound::SoundHandler* sound_handler;
+		Graphics::GraphicService* graphic_service;
+		UI::UIService* ui_service;
+		Sound::SoundService* sound_service;
 
-		void createHandlers();
+		void createServices();
 		void initialize();
 		void showSplashScreen();
 		void onDestroy();

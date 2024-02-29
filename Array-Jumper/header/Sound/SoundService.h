@@ -8,7 +8,7 @@ namespace Sound
 		BUTTON_CLICK
 	};
 
-	class SoundHandler
+	class SoundService
 	{
 	private:
 		const int background_music_volume = 60;
@@ -21,7 +21,7 @@ namespace Sound
 		void loadSoundFromFile();
 
 	public:
-		SoundHandler();
+		SoundService();
 
 		void initialize();
 

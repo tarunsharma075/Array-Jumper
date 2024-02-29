@@ -1,28 +1,28 @@
-#include "../../header/Sound/SoundHandler.h"
+#include "../../header/Sound/SoundService.h"
 
 namespace Sound
 {
-	SoundHandler::SoundHandler() = default;
+	SoundService::SoundService() = default;
 
-	void SoundHandler::initialize()
+	void SoundService::initialize()
 	{
 		loadBackgroundMusicFromFile();
 		loadSoundFromFile();
 	}
 
-	void SoundHandler::loadBackgroundMusicFromFile()
+	void SoundService::loadBackgroundMusicFromFile()
 	{
 		if (!background_music.openFromFile("assets/sounds/background_music.mp3"))
 			printf("Error loading background music file");
 	}
 
-	void SoundHandler::loadSoundFromFile()
+	void SoundService::loadSoundFromFile()
 	{
 		if (!buffer_button_click.loadFromFile("assets/sounds/button_click_sound.wav"))
 			printf("Error loading background music file");
 	}
 
-	void SoundHandler::playSound(SoundType soundType)
+	void SoundService::playSound(SoundType soundType)
 	{
 		switch (soundType)
 		{
@@ -37,7 +37,7 @@ namespace Sound
 		sound_effect.play();
 	}
 
-	void SoundHandler::playBackgroundMusic()
+	void SoundService::playBackgroundMusic()
 	{
 		background_music.setLoop(true);
 		background_music.setVolume(background_music_volume);
