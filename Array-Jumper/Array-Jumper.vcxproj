@@ -149,6 +149,33 @@
     <ClInclude Include="header\UI\SplashScreen\SplashScreenUIController.h" />
     <ClInclude Include="header\UI\UIService.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\bubbleBobble.ttf" />
+    <Font Include="assets\fonts\zorque.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\sounds\background_music.mp3" />
+    <Media Include="assets\sounds\button_click_sound.wav" />
+    <Media Include="assets\sounds\death.wav" />
+    <Media Include="assets\sounds\jump.wav" />
+    <Media Include="assets\sounds\level_complete.wav" />
+    <Media Include="assets\sounds\move.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\textures\array_jumper_bg.png" />
+    <Image Include="assets\textures\box.png" />
+    <Image Include="assets\textures\character.png" />
+    <Image Include="assets\textures\instructions_button.png" />
+    <Image Include="assets\textures\letter_one.png" />
+    <Image Include="assets\textures\letter_three.png" />
+    <Image Include="assets\textures\letter_two.png" />
+    <Image Include="assets\textures\menu_button.png" />
+    <Image Include="assets\textures\obstacle_01.png" />
+    <Image Include="assets\textures\obstacle_02.png" />
+    <Image Include="assets\textures\outscal_logo.png" />
+    <Image Include="assets\textures\play_button.png" />
+    <Image Include="assets\textures\quit_button.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
