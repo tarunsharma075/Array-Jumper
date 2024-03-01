@@ -35,7 +35,10 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="source\UI\Credits\CreditsScreenUIController.cpp" />
-    <ClCompile Include="source\UI\Instructions\Instructions.cpp" />
+    <ClCompile Include="source\Event\EventService.cpp" />
+    <ClCompile Include="source\Global\ServiceLocator.cpp" />
+    <ClCompile Include="source\UI\Instructions\InstructionsUIController.cpp" />
+    <ClCompile Include="source\Global\Config.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\Main\GameService.h">
@@ -57,7 +60,10 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="header\UI\Credits\CreditsScreenUIController.h" />
-    <ClInclude Include="header\UI\Instructions\Instructions.h" />
+    <ClInclude Include="header\Event\EventService.h" />
+    <ClInclude Include="header\UI\Instructions\InstructionsUIController.h" />
+    <ClInclude Include="header\Global\ServiceLocator.h" />
+    <ClInclude Include="header\Global\Config.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\sounds\background_music.mp3" />

@@ -1,6 +1,7 @@
 #include "../../header/UI/Credits/CreditsScreenUIController.h"
 #include "../../header/Main/GameService.h"
 #include "../../header/Global/ServiceLocator.h"
+#include "../../header/Global/Config.h"
 
 namespace UI
 {
@@ -23,7 +24,7 @@ namespace UI
 
         void CreditsScreenUIController::initializeBackgroundImage()
         {
-            if (background_texture.loadFromFile("assets/textures/array_jumper_bg.png"))
+            if (background_texture.loadFromFile(Config::array_jumper_bg_texture_path))
             {
                 background_sprite.setTexture(background_texture);
                 setBackgroundAlpha();
@@ -59,8 +60,8 @@ namespace UI
 
         bool CreditsScreenUIController::loadButtonTexturesFromFile()
         {
-            return quit_button_texture.loadFromFile("assets/textures/quit_button.png") &&
-                menu_button_texture.loadFromFile("assets/textures/menu_button.png");
+            return quit_button_texture.loadFromFile(Config::quit_button_texture_path) &&
+                menu_button_texture.loadFromFile(Config::menu_button_texture_path);
         }
 
         void CreditsScreenUIController::setButtonSprites()

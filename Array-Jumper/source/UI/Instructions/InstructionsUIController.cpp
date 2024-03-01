@@ -1,5 +1,6 @@
 #include "../../header/UI/Instructions/InstructionsUIController.h"
 #include "../../header/Global/ServiceLocator.h"
+#include "../../header/Global/Config.h"
 #include "../../header/Main/GameService.h"
 #include "../../header/Sound/SoundService.h"
 
@@ -62,7 +63,7 @@ namespace UI
 
         void InstrcutionsUIController::initializeBackgroundImage()
         {
-            if (background_texture.loadFromFile("assets/textures/array_jumper_bg.png"))
+            if (background_texture.loadFromFile(Config::array_jumper_bg_texture_path))
             {
                 background_sprite.setTexture(background_texture);
                 scaleBackgroundImage();
@@ -79,7 +80,7 @@ namespace UI
 
         void InstrcutionsUIController::initializeMainMenuButton()
         {
-            if (!menu_button_texture.loadFromFile("assets/textures/menu_button.png"))
+            if (!menu_button_texture.loadFromFile(Config::menu_button_texture_path))
             {
                 printf("Button Texture Not Found");
                 return;
