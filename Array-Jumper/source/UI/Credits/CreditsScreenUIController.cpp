@@ -1,4 +1,4 @@
-#include "../../header/Credits/CreditsScreenUIController.h"
+#include "../../header/UI/Credits/CreditsScreenUIController.h"
 #include "../../header/Main/GameService.h"
 
 namespace UI
