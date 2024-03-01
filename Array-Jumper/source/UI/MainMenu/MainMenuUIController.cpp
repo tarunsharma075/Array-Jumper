@@ -1,5 +1,6 @@
 #include "../../header/UI/MainMenu/MainMenuUIController.h"
 #include "../../header/Global/ServiceLocator.h"
+#include "../../header/Main/GameService.h"
 
 
 namespace UI
@@ -8,6 +9,7 @@ namespace UI
     {
         using namespace Global;
         using namespace Sound;
+        using namespace Main;
 
         MainMenuUIController::MainMenuUIController() { game_window = nullptr; }
 
@@ -120,7 +122,7 @@ namespace UI
 
             if (clickedButton(&instructions_button_sprite, mouse_position))
             {
-                printf("Clicked Instruction Button \n");
+                GameService::setGameState(GameState::INSTRUCTIONS);
                 ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
             }
 

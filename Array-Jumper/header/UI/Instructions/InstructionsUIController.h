@@ -7,14 +7,18 @@ namespace UI
 {
 	namespace Instrcutions
 	{
-		class GraphicService;
-
 		class InstrcutionsUIController
 		{
 		private:
+			// Constants:
 			const int number_of_instructions = 4;
 			const float top_offset = 250.f;
 			const float text_spacing = 100.f;
+			
+			const float button_width = 400.f;
+			const float button_height = 140.f;
+
+			bool mouse_button_pressed = false;
 
 			const sf::String instruction_string_one = "Move with 'Left' and 'Right' arrow keys";
 			const sf::String instruction_string_two = "Hold 'Space' while moving to 'JUMP'";
@@ -22,6 +26,7 @@ namespace UI
 			const sf::String instruction_string_four = "Reach the target cell to 'Win' the game";
 
 			sf::String* instructions;
+			sf::RenderWindow* game_window;
 
 			// Textures:
 			sf::Texture background_texture;
@@ -31,7 +36,17 @@ namespace UI
 			sf::Sprite menu_button_sprite;
 
 			void initializeInstructions();
+			void initializeBackgroundImage();
+			void initializeMainMenuButton();
+			
 			void drawInstructions();
+			void scaleBackgroundImage();
+			void scaleButton(sf::Sprite* button_to_scale);
+			
+			void handleButtonInteractions();
+			bool pressedMouseButton();
+			bool clickedButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position);
+			
 			void onDestroy();
 
 		public:
