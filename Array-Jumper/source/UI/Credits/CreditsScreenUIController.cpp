@@ -1,26 +1,27 @@
 #include "../../header/UI/Credits/CreditsScreenUIController.h"
 #include "../../header/Main/GameService.h"
+#include "../../header/Global/ServiceLocator.h"
 
 namespace UI
 {
     namespace Credits
     {
         using namespace Main;
+        using namespace Global;
+        using namespace Sound;
+
         CreditsScreenUIController::CreditsScreenUIController()
         {
             game_window = nullptr;
-            sound_service = nullptr;
         }
 
         CreditsScreenUIController::~CreditsScreenUIController()
         {
         }
 
-        void CreditsScreenUIController::initialize(Graphics::GraphicService* graphic_handler_instance, Sound::SoundService* sound_handler_instance)
+        void CreditsScreenUIController::initialize()
         {
-            graphic_service = graphic_handler_instance;
-            sound_service = sound_handler_instance;
-            game_window = graphic_service->getGameWindow();
+            game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
             initializeBackgroundImage();
             initializeButtons();
@@ -146,13 +147,13 @@ namespace UI
 
         void CreditsScreenUIController::onClickMenuButton()
         {
-            sound_service->playSound(SoundType::BUTTON_CLICK);
+            ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
             GameService::setGameState(GameState::MAIN_MENU);
         }
 
         void CreditsScreenUIController::drawGameTitle()
         {
-            graphic_service->drawText(game_window_title, top_offset, font_size);
+            ServiceLocator::getInstance()->getGraphicService()->drawText(game_window_title, top_offset, font_size);
         }
     }
 }

@@ -20,7 +20,6 @@ namespace UI
 			bool mouse_button_pressed = false;
 
 			sf::RenderWindow* game_window;
-			Sound::SoundService* sound_service;
 
 			// Textures:
 			sf::Texture background_texture;
@@ -53,7 +52,7 @@ namespace UI
 		public:
 			MainMenuUIController();
 
-			void initialize(sf::RenderWindow* game_window_instance, Sound::SoundService* sound_service_instance);
+			void initialize(sf::RenderWindow* game_window_instance);
 			void update();
 			void render();
 		};

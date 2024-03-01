@@ -35,6 +35,7 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="source\UI\Credits\CreditsScreenUIController.cpp" />
+    <ClCompile Include="source\UI\Instructions\Instructions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\Main\GameService.h">
@@ -55,6 +56,8 @@
     <ClInclude Include="header\Sound\SoundService.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="header\UI\Credits\CreditsScreenUIController.h" />
+    <ClInclude Include="header\UI\Instructions\Instructions.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\sounds\background_music.mp3" />

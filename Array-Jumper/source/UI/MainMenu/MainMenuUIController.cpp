@@ -1,17 +1,19 @@
 #include "../../header/UI/MainMenu/MainMenuUIController.h"
+#include "../../header/Global/ServiceLocator.h"
 
 
 namespace UI
 {
     namespace MainMenu
     {
+        using namespace Global;
         using namespace Sound;
+
         MainMenuUIController::MainMenuUIController() { game_window = nullptr; }
 
-        void MainMenuUIController::initialize(sf::RenderWindow* game_window_instance, SoundService* sound_service_instance)
+        void MainMenuUIController::initialize(sf::RenderWindow* game_window_instance)
         {
             game_window = game_window_instance;
-            sound_service = sound_service_instance;
             initializeBackgroundImage();
             initializeButtons();
         }
@@ -113,13 +115,13 @@ namespace UI
             if (clickedButton(&play_button_sprite, mouse_position))
             {
                 printf("Clicked Play Button \n");
-                sound_service->playSound(SoundType::BUTTON_CLICK);
+                ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
             }
 
             if (clickedButton(&instructions_button_sprite, mouse_position))
             {
                 printf("Clicked Instruction Button \n");
-                sound_service->playSound(SoundType::BUTTON_CLICK);
+                ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
             }
 
             if (clickedButton(&quit_button_sprite, mouse_position))

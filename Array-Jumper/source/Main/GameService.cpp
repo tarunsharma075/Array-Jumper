@@ -5,66 +5,60 @@ namespace Main
 	using namespace Graphics;
 	using namespace UI;
 	using namespace Sound;
+	using namespace Global;
 
 	GameState GameService::current_state = GameState::BOOT;
 
 	GameService::GameService()
 	{
-		graphic_service = nullptr;
-		ui_service = nullptr;
-		sound_service = nullptr;
 		game_window = nullptr;
 
-		createServices();
+		service_locator = nullptr;
 	}
 
 	GameService::~GameService() { onDestroy(); }
 
 	void GameService::ignite()
 	{
+		service_locator = ServiceLocator::getInstance();
 		initialize();
 		showSplashScreen();
-	}
-
-	void GameService::createServices()
-	{
-		graphic_service = new GraphicService();
-		ui_service = new UIService();
-		sound_service = new SoundService();
 	}
 
 	void GameService::initialize()
 	{
 		// Game Window will be created here.
-		game_window = graphic_service->createGameWindow();
-		graphic_service->setFrameRate(frame_rate);
+		service_locator->initialize();
+		//game_window = service_locator->getGraphicService()->createGameWindow();
+		game_window = service_locator->getGraphicService()->getGameWindow();
+		service_locator->getGraphicService()->setFrameRate(frame_rate);
 
-		sound_service->initialize();
-		ui_service->initialize(game_window, sound_service);
 	}
 
 	// Main Game Loop.
 	void GameService::update()
 	{
-		ui_service->updateUI();
+		// Process Events.
+		service_locator->getEventService()->processEvents();
+
+		// Update Game Logic.
+		service_locator->update();
 	}
 
 	void GameService::render()
 	{
 		game_window->clear();
-		ui_service->render();
+		service_locator->render();
 		game_window->display();
 	}
 
-	bool GameService::isRunning() { return graphic_service->isGameWindowOpen(); }
+	bool GameService::isRunning() { return service_locator->getGraphicService()->isGameWindowOpen(); }
 
 	void GameService::showSplashScreen() { setGameState(GameState::SPLASH_SCREEN); }
 
 	void GameService::onDestroy()
 	{
-		delete(ui_service);
-		delete(sound_service);
-		delete(graphic_service);
+		service_locator->deleteServiceLocator();
 	}
 
 	void GameService::setGameState(GameState new_state) { current_state = new_state; }

@@ -34,6 +34,8 @@ namespace Graphics
 		sf::RenderWindow* createGameWindow();
 
 		void initialize();
+		void update();
+		void render();
 		bool isGameWindowOpen();
 		void setFrameRate(int);
 		sf::RenderWindow* getGameWindow();

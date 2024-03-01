@@ -1,15 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "../../header/Sound/SoundService.h"
-#include "../../header/Graphics/GraphicService.h"
 
 
 namespace UI
 {
 	namespace Credits
 	{
-		using namespace Sound;
-		using namespace Graphics;
 
 		class CreditsScreenUIController
 		{
@@ -24,8 +20,6 @@ namespace UI
 			bool mouse_button_pressed = false;
 
 			sf::RenderWindow* game_window;
-			Sound::SoundService* sound_service;
-			Graphics::GraphicService* graphic_service;
 
 			// Textures:
 			sf::Texture background_texture;
@@ -62,7 +56,7 @@ namespace UI
 			CreditsScreenUIController();
 			~CreditsScreenUIController();
 
-			void initialize(Graphics::GraphicService* graphic_handler_instance, Sound::SoundService* sound_handler_instance);
+			void initialize();
 			void update();
 			void render();
 		};

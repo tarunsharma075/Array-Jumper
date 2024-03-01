@@ -20,6 +20,9 @@ namespace Graphics
 		initializeText();
 	}
 
+	void GraphicService::update(){}
+	void GraphicService::render(){}
+
 	sf::RenderWindow* GraphicService::createGameWindow()
 	{
 		configureVideoMode();

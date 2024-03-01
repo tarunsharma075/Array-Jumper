@@ -3,33 +3,32 @@
 
 #include "../../header/UI/SplashScreen/SplashScreenUIController.h"
 #include "../../header/UI/MainMenu/MainMenuUIController.h"
-#include "../../header/Sound/SoundService.h"
+#include "../../header/UI/Instructions/InstructionsUIController.h"
+#include "../../header/UI/Credits/CreditsScreenUIController.h"
 
 namespace UI
 {
-	/*class GameService;
-	class SplashScreenUIController;
-	class MainMenuUIController;
-	class SoundService;*/
 
 	class UIService
 	{
 	private:
-		SplashScreen::SplashScreenUIController* splash_screen_controller;
-		MainMenu::MainMenuUIController* main_menu_controller;
+		SplashScreen::SplashScreenUIController* splash_screen_ui_controller;
+		MainMenu::MainMenuUIController* main_menu_ui_controller;
+		Credits::CreditsScreenUIController* credits_screen_ui_controller;
+		Instrcutions::InstrcutionsUIController* instructions_ui_controller;
 
 		sf::RenderWindow* game_window;
-		Sound::SoundService* sound_service;
 
 		void createControllers();
 		void initializeControllers();
+		void onDestroy();
 
 	public:
 		UIService();
 		~UIService();
 
-		void initialize(sf::RenderWindow* game_window_instance, Sound::SoundService* sound_service_instance);
-		void updateUI();
+		void initialize();
+		void update();
 		void render();
 	};
 }

@@ -1,5 +1,6 @@
 #include "../../header/UI/SplashScreen/SplashScreenUIController.h"
 #include "../../header/Main/GameService.h"
+#include "../../header/Global/ServiceLocator.h"
 
 
 namespace UI
@@ -8,18 +9,18 @@ namespace UI
     {
 
         using namespace Main;
+        using namespace Global;
         using namespace Sound;
 
         SplashScreenUIController::SplashScreenUIController()
         {
             game_window = nullptr;
-            sound_service = nullptr;
         }
 
-        void SplashScreenUIController::initialize(sf::RenderWindow* game_window_instance, Sound::SoundService* sound_service_instance)
+        void SplashScreenUIController::initialize(sf::RenderWindow* game_window_instance)
         {
-            game_window = game_window_instance;
-            sound_service = sound_service_instance;
+            //game_window = game_window_instance;
+            game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
             initializeVariables();
             initializeOutscalLogo();
@@ -89,7 +90,7 @@ namespace UI
 
         void SplashScreenUIController::logoAnimationComplete()
         {
-            sound_service->playBackgroundMusic();
+            ServiceLocator::getInstance()->getSoundService()->playBackgroundMusic();
             GameService::setGameState(GameState::MAIN_MENU);
         }
 
