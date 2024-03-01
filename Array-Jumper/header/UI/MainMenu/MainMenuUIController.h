@@ -17,8 +17,6 @@ namespace UI
 			const float button_width = 400.f;
 			const float button_height = 140.f;
 
-			bool mouse_button_pressed = false;
-
 			sf::RenderWindow* game_window;
 
 			// Textures:
@@ -52,7 +50,7 @@ namespace UI
 		public:
 			MainMenuUIController();
 
-			void initialize(sf::RenderWindow* game_window_instance);
+			void initialize();
 			void update();
 			void render();
 		};

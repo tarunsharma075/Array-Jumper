@@ -17,11 +17,9 @@ namespace UI
             game_window = nullptr;
         }
 
-        void SplashScreenUIController::initialize(sf::RenderWindow* game_window_instance)
+        void SplashScreenUIController::initialize()
         {
-            //game_window = game_window_instance;
             game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-
             initializeVariables();
             initializeOutscalLogo();
         }
@@ -35,9 +33,7 @@ namespace UI
                 updateLogo(deltaTime);
             }
             else
-            {
                 logoAnimationComplete();
-            }
         }
 
         void SplashScreenUIController::render() { game_window->draw(outscal_logo_sprite); }

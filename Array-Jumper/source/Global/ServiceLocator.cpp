@@ -24,8 +24,8 @@ namespace Global
 
 	void ServiceLocator::createServices()
 	{
-		event_service = new EventService();
 		graphic_service = new GraphicService();
+		event_service = new EventService();
 		sound_service = new SoundService();
 		ui_service = new UIService();
 	}
@@ -34,8 +34,8 @@ namespace Global
 	{
 		graphic_service->initialize();
 		event_service->initialize();
-		ui_service->initialize();
 		sound_service->initialize();
+		ui_service->initialize();
 	}
 
 	void ServiceLocator::update()
@@ -53,10 +53,10 @@ namespace Global
 
 	void ServiceLocator::clearAllServices()
 	{
-		delete(ui_service);
 		delete(graphic_service);
 		delete(event_service);
 		delete(sound_service);
+		delete(ui_service);
 	}
 
 	ServiceLocator* ServiceLocator::getInstance()
@@ -65,9 +65,9 @@ namespace Global
 		return &instance;
 	}
 
-	EventService* ServiceLocator::getEventService() { return event_service; }
-
 	GraphicService* ServiceLocator::getGraphicService() { return graphic_service; }
+
+	EventService* ServiceLocator::getEventService() { return event_service; }
 
 	SoundService* ServiceLocator::getSoundService() { return sound_service; }
 

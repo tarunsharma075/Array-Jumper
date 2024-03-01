@@ -40,24 +40,15 @@ namespace UI
     void UIService::initialize()
     {
         game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-
         initializeControllers();
     }
 
     void UIService::initializeControllers()
     {
-        splash_screen_ui_controller->initialize(game_window);
-        main_menu_ui_controller->initialize(game_window);
+        splash_screen_ui_controller->initialize();
+        main_menu_ui_controller->initialize();
         credits_screen_ui_controller->initialize();
         instructions_ui_controller->initialize();
-    }
-
-    void UIService::onDestroy()
-    {
-        delete(splash_screen_ui_controller);
-        delete(main_menu_ui_controller);
-        delete(credits_screen_ui_controller);
-        delete(instructions_ui_controller);
     }
 
     void UIService::update()
@@ -96,5 +87,13 @@ namespace UI
             credits_screen_ui_controller->render();
             break;
         }
+    }
+
+    void UIService::onDestroy()
+    {
+        delete(splash_screen_ui_controller);
+        delete(main_menu_ui_controller);
+        delete(credits_screen_ui_controller);
+        delete(instructions_ui_controller);
     }
 }

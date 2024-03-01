@@ -9,11 +9,10 @@ namespace Global
     class ServiceLocator
     {
     private:
-        //Event::EventService* event_service;
         Graphics::GraphicService* graphic_service;
+        Event::EventService* event_service;
         Sound::SoundService* sound_service;
         UI::UIService* ui_service;
-        Event::EventService* event_service;
 
         ~ServiceLocator();
 
@@ -28,8 +27,8 @@ namespace Global
         void update();
         void render();
 
-        Event::EventService* getEventService();
         Graphics::GraphicService* getGraphicService();
+        Event::EventService* getEventService();
         Sound::SoundService* getSoundService();
         UI::UIService* getUIService();
         void deleteServiceLocator();

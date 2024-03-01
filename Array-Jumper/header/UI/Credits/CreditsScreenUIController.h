@@ -10,16 +10,12 @@ namespace UI
 		class CreditsScreenUIController
 		{
 		private:
+			sf::RenderWindow* game_window;
 			const sf::String game_window_title = "Outscal Presents - Array Jumper";
+			
 			const float button_width = 400.f;
 			const float button_height = 140.f;
 			const float background_alpha = 110.f;
-			const float top_offset = 300.f;
-			const int font_size = 100;
-
-			bool mouse_button_pressed = false;
-
-			sf::RenderWindow* game_window;
 
 			// Textures:
 			sf::Texture background_texture;
@@ -30,6 +26,9 @@ namespace UI
 
 			sf::Texture menu_button_texture;
 			sf::Sprite menu_button_sprite;
+
+			const float top_offset = 300.f;
+			const int font_size = 100;
 
 			void initializeBackgroundImage();
 			void setBackgroundAlpha();

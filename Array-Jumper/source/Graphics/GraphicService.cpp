@@ -3,15 +3,9 @@
 
 namespace Graphics
 {
-	GraphicService::GraphicService()
-	{
-		game_window = nullptr;
-	}
+	GraphicService::GraphicService() { game_window = nullptr; }
 
-	GraphicService::~GraphicService()
-	{
-		onDestroy();
-	}
+	GraphicService::~GraphicService() { onDestroy(); }
 
 	void GraphicService::initialize()
 	{
@@ -35,27 +29,7 @@ namespace Graphics
 		video_mode = *(new sf::VideoMode(game_window_width, game_window_height, sf::VideoMode::getDesktopMode().bitsPerPixel));
 	}
 
-	void GraphicService::onDestroy()
-	{
-		delete(game_window);
-	}
-
-	void GraphicService::setFrameRate(int frame_rate_to_set)
-	{
-		game_window->setFramerateLimit(frame_rate_to_set);
-	}
-
-
-
-	bool GraphicService::isGameWindowOpen()
-	{
-		return game_window->isOpen();
-	}
-
-	sf::RenderWindow* GraphicService::getGameWindow()
-	{
-		return game_window;
-	}
+	void GraphicService::setFrameRate(int frame_rate_to_set) { game_window->setFramerateLimit(frame_rate_to_set); }
 
 	void GraphicService::initializeText()
 	{
@@ -63,17 +37,18 @@ namespace Graphics
 		setupText();
 	}
 
-	bool GraphicService::loadFont()
-	{
-		return font.loadFromFile("assets/fonts/bubbleBobble.ttf");
-	}
+	bool GraphicService::loadFont() { return font.loadFromFile("assets/fonts/bubbleBobble.ttf"); }
 
 	void GraphicService::setupText()
 	{
 		text.setFont(font);
-		text.setCharacterSize(font_size);
+		text.setCharacterSize(default_font_size);
 		text.setFillColor(sf::Color::White);
 	}
+
+	bool GraphicService::isGameWindowOpen() { return game_window->isOpen(); }
+
+	sf::RenderWindow* GraphicService::getGameWindow() { return game_window; }
 
 	void GraphicService::drawText(sf::String text_value, sf::Vector2f text_position)
 	{
@@ -82,25 +57,31 @@ namespace Graphics
 		game_window->draw(text);
 	}
 
-	void GraphicService::drawText(sf::String text_value, float text_y_position, int text_font_size)
+	void GraphicService::drawText(sf::String text_value, float text_y_position, int font_size_to_set)
 	{
-		text.setCharacterSize(text_font_size);
+		text.setCharacterSize(font_size_to_set);
 		drawText(text_value, text_y_position);
-		text.setCharacterSize(font_size);
+		text.setCharacterSize(default_font_size);
 	}
 
 	void GraphicService::drawText(sf::String text_value, float text_y_position)
 	{
 		text.setString(text_value);
-		setTextPosition(text_y_position);
+		center_align_text(text_y_position);
 		game_window->draw(text);
 	}
 
-	void GraphicService::setTextPosition(float y_position)
+	void GraphicService::center_align_text(float y_position)
 	{
 		sf::FloatRect textBounds = text.getLocalBounds();
 
 		float x_position = (game_window->getSize().x - textBounds.width) / 2;
 		text.setPosition(x_position, y_position);
 	}
+
+	void GraphicService::onDestroy()
+	{
+		delete(game_window);
+	}
+
 }

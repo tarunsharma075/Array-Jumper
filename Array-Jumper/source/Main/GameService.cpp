@@ -12,7 +12,6 @@ namespace Main
 	GameService::GameService()
 	{
 		game_window = nullptr;
-
 		service_locator = nullptr;
 	}
 
@@ -22,17 +21,13 @@ namespace Main
 	{
 		service_locator = ServiceLocator::getInstance();
 		initialize();
-		showSplashScreen();
+		setGameState(GameState::SPLASH_SCREEN);
 	}
 
 	void GameService::initialize()
 	{
-		// Game Window will be created here.
 		service_locator->initialize();
-		//game_window = service_locator->getGraphicService()->createGameWindow();
 		game_window = service_locator->getGraphicService()->getGameWindow();
-		service_locator->getGraphicService()->setFrameRate(frame_rate);
-
 	}
 
 	// Main Game Loop.
@@ -54,12 +49,7 @@ namespace Main
 
 	bool GameService::isRunning() { return service_locator->getGraphicService()->isGameWindowOpen(); }
 
-	void GameService::showSplashScreen() { setGameState(GameState::SPLASH_SCREEN); }
-
-	void GameService::onDestroy()
-	{
-		service_locator->deleteServiceLocator();
-	}
+	void GameService::onDestroy() { service_locator->deleteServiceLocator(); }
 
 	void GameService::setGameState(GameState new_state) { current_state = new_state; }
 

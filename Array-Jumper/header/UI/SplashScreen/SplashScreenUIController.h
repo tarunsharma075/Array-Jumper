@@ -35,7 +35,7 @@ namespace UI
 		public:
 			SplashScreenUIController();
 
-			void initialize(sf::RenderWindow* game_window_instance);
+			void initialize();
 			void update();
 			void render();
 

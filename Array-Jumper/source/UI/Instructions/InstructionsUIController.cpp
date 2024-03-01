@@ -12,15 +12,9 @@ namespace UI
         using namespace Main;
         using namespace Sound;
 
-        InstrcutionsUIController::InstrcutionsUIController()
-        {
-            instructions = nullptr;
-        }
+        InstrcutionsUIController::InstrcutionsUIController() { instructions = nullptr; }
 
-        InstrcutionsUIController::~InstrcutionsUIController()
-        {
-            onDestroy();
-        }
+        InstrcutionsUIController::~InstrcutionsUIController() { onDestroy(); }
 
         void InstrcutionsUIController::initialize()
         {
@@ -38,14 +32,7 @@ namespace UI
         void InstrcutionsUIController::update()
         {
             if (pressedMouseButton())
-            {
                 handleButtonInteractions();
-                mouse_button_pressed = true;
-            }
-            else
-            {
-                mouse_button_pressed = false;
-            }
         }
 
         void InstrcutionsUIController::render()
@@ -116,8 +103,6 @@ namespace UI
 
         void InstrcutionsUIController::handleButtonInteractions()
         {
-            if (mouse_button_pressed) return;
-
             sf::Vector2f mouse_position = sf::Vector2f(sf::Mouse::getPosition(*game_window));
 
             if (clickedButton(&menu_button_sprite, mouse_position))
@@ -132,9 +117,6 @@ namespace UI
             return button_sprite->getGlobalBounds().contains(mouse_position);
         }
 
-        bool InstrcutionsUIController::pressedMouseButton()
-        {
-            return ServiceLocator::getInstance()->getEventService()->pressedLeftMouseButton();
-        }
+        bool InstrcutionsUIController::pressedMouseButton() { return ServiceLocator::getInstance()->getEventService()->pressedLeftMouseButton(); }
     }
 }

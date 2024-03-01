@@ -1,6 +1,5 @@
 #pragma once
 #include <SFML/Graphics/RenderWindow.hpp>
-
 #include "../../header/Graphics/GraphicService.h"
 #include "../../header/UI/UIService.h"
 #include "../../header/Sound/SoundService.h"
@@ -22,14 +21,12 @@ namespace Main
 	class GameService
 	{
 	private:
-		const int frame_rate = 60;
 
 		static GameState current_state;
 		Global::ServiceLocator* service_locator;
 		sf::RenderWindow* game_window;
 
 		void initialize();
-		void showSplashScreen();
 		void onDestroy();
 
 	public:

@@ -13,9 +13,9 @@ namespace UI
 
         MainMenuUIController::MainMenuUIController() { game_window = nullptr; }
 
-        void MainMenuUIController::initialize(sf::RenderWindow* game_window_instance)
+        void MainMenuUIController::initialize()
         {
-            game_window = game_window_instance;
+            game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
             initializeBackgroundImage();
             initializeButtons();
         }
@@ -88,14 +88,7 @@ namespace UI
         void MainMenuUIController::update()
         {
             if (pressedMouseButton())
-            {
                 handleButtonInteractions();
-                mouse_button_pressed = true;
-            }
-            else
-            {
-                mouse_button_pressed = false;
-            }
         }
 
         void MainMenuUIController::render()
@@ -106,12 +99,10 @@ namespace UI
             game_window->draw(quit_button_sprite);
         }
 
-        bool MainMenuUIController::pressedMouseButton() { return sf::Mouse::isButtonPressed(sf::Mouse::Left); }
+        bool MainMenuUIController::pressedMouseButton() { return ServiceLocator::getInstance()->getEventService()->pressedLeftMouseButton(); }
 
         void MainMenuUIController::handleButtonInteractions()
         {
-            if (mouse_button_pressed) return;
-
             sf::Vector2f mouse_position = sf::Vector2f(sf::Mouse::getPosition(*game_window));
 
             if (clickedButton(&play_button_sprite, mouse_position))

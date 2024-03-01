@@ -10,19 +10,13 @@ namespace UI
         using namespace Global;
         using namespace Sound;
 
-        CreditsScreenUIController::CreditsScreenUIController()
-        {
-            game_window = nullptr;
-        }
+        CreditsScreenUIController::CreditsScreenUIController() { game_window = nullptr; }
 
-        CreditsScreenUIController::~CreditsScreenUIController()
-        {
-        }
+        CreditsScreenUIController::~CreditsScreenUIController() = default;
 
         void CreditsScreenUIController::initialize()
         {
             game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-
             initializeBackgroundImage();
             initializeButtons();
         }
@@ -100,14 +94,7 @@ namespace UI
         void CreditsScreenUIController::update()
         {
             if (pressedMouseButton())
-            {
                 handleButtonInteractions();
-                mouse_button_pressed = true;
-            }
-            else
-            {
-                mouse_button_pressed = false;
-            }
         }
 
         void CreditsScreenUIController::render()
@@ -118,21 +105,17 @@ namespace UI
             drawGameTitle();
         }
 
-        bool CreditsScreenUIController::pressedMouseButton() { return sf::Mouse::isButtonPressed(sf::Mouse::Left); }
+        bool CreditsScreenUIController::pressedMouseButton() { return ServiceLocator::getInstance()->getEventService()->pressedLeftMouseButton(); }
 
         void CreditsScreenUIController::handleButtonInteractions()
         {
             sf::Vector2f mouse_position = sf::Vector2f(sf::Mouse::getPosition(*game_window));
 
             if (clickedButton(&quit_button_sprite, mouse_position))
-            {
                 onClickQuitButton();
-            }
 
             if (clickedButton(&menu_button_sprite, mouse_position))
-            {
                 onClickMenuButton();
-            }
         }
 
         bool CreditsScreenUIController::clickedButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position)
@@ -140,10 +123,7 @@ namespace UI
             return button_sprite->getGlobalBounds().contains(mouse_position);
         }
 
-        void CreditsScreenUIController::onClickQuitButton()
-        {
-            game_window->close();
-        }
+        void CreditsScreenUIController::onClickQuitButton() { game_window->close(); }
 
         void CreditsScreenUIController::onClickMenuButton()
         {
