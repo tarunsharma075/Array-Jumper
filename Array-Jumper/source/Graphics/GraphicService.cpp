@@ -1,8 +1,11 @@
 #include "../../header/Graphics/GraphicService.h"
+#include "../../header/Global/Config.h"
 
 
 namespace Graphics
 {
+	using namespace Global;
+
 	GraphicService::GraphicService()
 	{
 		game_window = nullptr;
@@ -65,7 +68,7 @@ namespace Graphics
 
 	bool GraphicService::loadFont()
 	{
-		return font.loadFromFile("assets/fonts/bubbleBobble.ttf");
+		return font.loadFromFile(Config::bubble_bobble_font_path);
 	}
 
 	void GraphicService::setupText()
