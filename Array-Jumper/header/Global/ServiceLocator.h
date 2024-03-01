@@ -31,6 +31,5 @@ namespace Global
         Event::EventService* getEventService();
         Sound::SoundService* getSoundService();
         UI::UIService* getUIService();
-        void deleteServiceLocator();
     };
 }

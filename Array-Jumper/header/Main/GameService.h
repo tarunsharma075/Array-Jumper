@@ -27,7 +27,6 @@ namespace Main
 		sf::RenderWindow* game_window;
 
 		void initialize();
-		void onDestroy();
 
 	public:
 		GameService();

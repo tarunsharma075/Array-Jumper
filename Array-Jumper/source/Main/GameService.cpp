@@ -15,7 +15,7 @@ namespace Main
 		service_locator = nullptr;
 	}
 
-	GameService::~GameService() { onDestroy(); }
+	GameService::~GameService() {}
 
 	void GameService::ignite()
 	{
@@ -48,8 +48,6 @@ namespace Main
 	}
 
 	bool GameService::isRunning() { return service_locator->getGraphicService()->isGameWindowOpen(); }
-
-	void GameService::onDestroy() { service_locator->deleteServiceLocator(); }
 
 	void GameService::setGameState(GameState new_state) { current_state = new_state; }
 
