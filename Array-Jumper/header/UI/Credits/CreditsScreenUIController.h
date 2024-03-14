@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
+#include "../../header/UI/UIElement/ImageView.h"
+#include "../../header/UI/UIElement/ButtonView.h"
+#include "../../header/UI/UIElement/TextView.h"
 
 namespace UI
 {
@@ -10,46 +12,40 @@ namespace UI
 		class CreditsScreenUIController
 		{
 		private:
-			sf::RenderWindow* game_window;
-			const sf::String game_window_title = "Outscal Presents - Array Jumper";
+
+			// Constants:
+			const sf::String game_title = "Outscal Presents - Array Jumper";
+			const float background_alpha = 85.f;
 			
+			const float text_top_offset = 260.f;
+			const int font_size = 110;
+			const sf::Color text_color = sf::Color::White;
+
 			const float button_width = 400.f;
 			const float button_height = 140.f;
-			const float background_alpha = 110.f;
+			const float menu_button_y_position = 600.f;
+			const float quit_button_y_position = 800.f;
 
-			// Textures:
-			sf::Texture background_texture;
-			sf::Sprite background_sprite;
+			// UI Elements:
+			UIElement::ImageView* background_image;
+			UIElement::TextView* title_text;
+			UIElement::ButtonView* menu_button;
+			UIElement::ButtonView* quit_button;
 
-			sf::Texture quit_button_texture;
-			sf::Sprite quit_button_sprite;
+			void createText();
+			void createImage();
+			void createButtons();
 
-			sf::Texture menu_button_texture;
-			sf::Sprite menu_button_sprite;
-
-			const float top_offset = 300.f;
-			const int font_size = 100;
-
+			void initializeText();
 			void initializeBackgroundImage();
-			void setBackgroundAlpha();
-			void scaleBackgroundImage();
-
 			void initializeButtons();
-			bool loadButtonTexturesFromFile();
-			void setButtonSprites();
 
-			void scaleAllButttons();
-			void scaleButton(sf::Sprite* button_to_scale);
-			void positionButtons();
+			void registerButtonCallback();
 
-			bool pressedMouseButton();
-			void handleButtonInteractions();
-			bool clickedButton(sf::Sprite*, sf::Vector2f);
+			void menuButtonCallback();
+			void quitButtonCallback();
 
-			void onClickQuitButton();
-			void onClickMenuButton();
-
-			void drawGameTitle();
+			void destroy();
 
 		public:
 			CreditsScreenUIController();
@@ -58,6 +54,7 @@ namespace UI
 			void initialize();
 			void update();
 			void render();
+			void show();
 		};
 	}
 }

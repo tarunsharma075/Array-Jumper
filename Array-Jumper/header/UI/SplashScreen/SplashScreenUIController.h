@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../../header/UI/UIElement/AnimatedImageView.h"
 
 namespace UI
 {
@@ -11,35 +12,26 @@ namespace UI
 		{
 		private:
 			// Constants:
-			const float logo_animation_time = 2.0f;
-			const float splash_screen_time = 6.0f;
+			const float logo_animation_duration = 2.0f;
+			const float logo_width = 600.f;
+			const float logo_height = 134.f;
 
-			sf::RenderWindow* game_window;
-			sf::Texture outscal_logo_texture;
-			sf::Sprite outscal_logo_sprite;
-			sf::Clock clock;
-			float elapsed_time;
+			// UI Elements:
+			UIElement::AnimatedImageView* outscal_logo_view;
 
-			// Initialization:
-			void initializeVariables();
 			void initializeOutscalLogo();
-			void loadOutscalTexture();
-			bool tryLoadingOutscalLogo();
-			void setPositionToCenter();
-
-			void showLogoWithFade();
-			void hideLogoWithFade();
-			void logoAnimationComplete();
-			void updateLogo(float deltaTime);
+			void fadeInAnimationCallback();
+			void fadeOutAnimationCallback();
+			sf::Vector2f getLogoPosition();
 
 		public:
 			SplashScreenUIController();
+			~SplashScreenUIController();
 
 			void initialize();
 			void update();
 			void render();
-
-			void showSplashScreen();
+			void show();
 		};
 	}
 }

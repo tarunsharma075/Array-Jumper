@@ -1,123 +1,135 @@
 #include "../../header/UI/Instructions/InstructionsUIController.h"
-#include "../../header/Global/ServiceLocator.h"
-#include "../../header/Global/Config.h"
 #include "../../header/Main/GameService.h"
+#include "../../header/Graphics/GraphicService.h"
 #include "../../header/Sound/SoundService.h"
-
+#include "../../header/Event/EventService.h"
+#include "../../header/Global/Config.h"
+#include "../../header/Global/ServiceLocator.h"
 
 namespace UI
 {
     namespace Instrcutions
     {
         using namespace Global;
+        using namespace UIElement;
         using namespace Main;
+        using namespace Graphics;
         using namespace Sound;
 
-        InstrcutionsUIController::InstrcutionsUIController() { instructions = nullptr; }
-
-        InstrcutionsUIController::~InstrcutionsUIController() { onDestroy(); }
-
-        void InstrcutionsUIController::initialize()
+        InstrcutionsUIController::InstrcutionsUIController()
         {
-            game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-            initializeInstructions();
-            initializeBackgroundImage();
-            initializeMainMenuButton();
+            createButtons();
+            createImage();
+            createText();
         }
 
-        void InstrcutionsUIController::onDestroy()
+        InstrcutionsUIController::~InstrcutionsUIController()
         {
-            delete[] instructions;
+            destroy();
         }
 
-        void InstrcutionsUIController::update()
+        void InstrcutionsUIController::createImage()
         {
-            if (pressedMouseButton())
-                handleButtonInteractions();
+            background_image = new ImageView();
         }
 
-        void InstrcutionsUIController::render()
+        void InstrcutionsUIController::createButtons()
         {
-            game_window->draw(background_sprite);
-            game_window->draw(menu_button_sprite);
-            drawInstructions();
+            menu_button = new ButtonView();
         }
 
-        void InstrcutionsUIController::initializeInstructions()
-        {
-            instructions = new sf::String[number_of_instructions]();
-
-            instructions[0] = instruction_string_one;
-            instructions[1] = instruction_string_two;
-            instructions[2] = instruction_string_three;
-            instructions[3] = instruction_string_four;
-        }
-
-        void InstrcutionsUIController::drawInstructions()
+        void InstrcutionsUIController::createText()
         {
             for (int i = 0; i < number_of_instructions; i++)
             {
-                ServiceLocator::getInstance()->getGraphicService()->drawText(instructions[i], top_offset + (text_spacing * i));
+                instructions_text_list.push_back(new TextView());
             }
+        }
+
+        void InstrcutionsUIController::initialize()
+        {
+            initializeTexts();
+            initializeBackgroundImage();
+            initializeButtons();
+            registerButtonCallback();
         }
 
         void InstrcutionsUIController::initializeBackgroundImage()
         {
-            if (background_texture.loadFromFile(Config::array_jumper_bg_texture_path))
+            sf::RenderWindow* game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
+
+            background_image->initialize(Config::array_jumper_bg_texture_path, game_window->getSize().x, game_window->getSize().y, sf::Vector2f(0, 0));
+            background_image->setImageAlpha(background_alpha);
+        }
+
+        void InstrcutionsUIController::initializeButtons()
+        {
+            menu_button->initialize("Menu Button", Config::menu_button_texture_path, button_width, button_height, sf::Vector2f(0, menu_button_y_position));
+            menu_button->setCentreAlinged();
+        }
+
+        void InstrcutionsUIController::initializeTexts()
+        {
+            for (int i = 0; i < instructions_text_list.size(); i++)
             {
-                background_sprite.setTexture(background_texture);
-                scaleBackgroundImage();
+                instructions_text_list[i]->initialize(instructions[i], sf::Vector2f(0, top_offset + (text_spacing * i)), FontType::BUBBLE_BOBBLE, font_size, text_color);
+                instructions_text_list[i]->setTextCentreAligned();
             }
         }
 
-        void InstrcutionsUIController::scaleBackgroundImage()
+        void InstrcutionsUIController::registerButtonCallback()
         {
-            background_sprite.setScale(
-                static_cast<float>(game_window->getSize().x) / background_sprite.getTexture()->getSize().x,
-                static_cast<float>(game_window->getSize().y) / background_sprite.getTexture()->getSize().y
-            );
+            menu_button->registerCallbackFuntion(std::bind(&InstrcutionsUIController::menuButtonCallback, this));
         }
 
-        void InstrcutionsUIController::initializeMainMenuButton()
+        void InstrcutionsUIController::menuButtonCallback()
         {
-            if (!menu_button_texture.loadFromFile(Config::menu_button_texture_path))
+            ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+            GameService::setGameState(GameState::MAIN_MENU);
+        }
+
+        void InstrcutionsUIController::update()
+        {
+            background_image->update();
+            menu_button->update();
+
+            for (int i = 0; i < instructions_text_list.size(); i++)
             {
-                printf("Button Texture Not Found");
-                return;
-            }
-
-            menu_button_sprite.setTexture(menu_button_texture);
-            scaleButton(&menu_button_sprite);
-
-            float x_position = (static_cast<float>(game_window->getSize().x) / 2) - button_width / 2;
-            menu_button_sprite.setPosition({ x_position, 800.f });
-        }
-
-        void InstrcutionsUIController::scaleButton(sf::Sprite* button_to_scale)
-        {
-            button_to_scale->setScale(
-                button_width / button_to_scale->getTexture()->getSize().x,
-                button_height / button_to_scale->getTexture()->getSize().y
-            );
-        }
-
-
-        void InstrcutionsUIController::handleButtonInteractions()
-        {
-            sf::Vector2f mouse_position = sf::Vector2f(sf::Mouse::getPosition(*game_window));
-
-            if (clickedButton(&menu_button_sprite, mouse_position))
-            {
-                GameService::setGameState(GameState::MAIN_MENU);
-                ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+                instructions_text_list[i]->update();
             }
         }
 
-        bool InstrcutionsUIController::clickedButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position)
+        void InstrcutionsUIController::render()
         {
-            return button_sprite->getGlobalBounds().contains(mouse_position);
+            background_image->render();
+            menu_button->render();
+
+            for (int i = 0; i < instructions_text_list.size(); i++)
+            {
+                instructions_text_list[i]->render();
+            }
         }
 
-        bool InstrcutionsUIController::pressedMouseButton() { return ServiceLocator::getInstance()->getEventService()->pressedLeftMouseButton(); }
+        void InstrcutionsUIController::show()
+        {
+            background_image->show();
+            menu_button->show();
+
+            for (int i = 0; i < instructions_text_list.size(); i++)
+            {
+                instructions_text_list[i]->show();
+            }
+        }
+
+        void InstrcutionsUIController::destroy()
+        {
+            delete (background_image);
+            delete (menu_button);
+
+            for (int i = 0; i < instructions_text_list.size(); i++)
+            {
+                delete (instructions_text_list[i]);
+            }
+        }
     }
 }

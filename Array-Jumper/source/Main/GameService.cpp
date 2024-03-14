@@ -21,13 +21,19 @@ namespace Main
 	{
 		service_locator = ServiceLocator::getInstance();
 		initialize();
-		setGameState(GameState::SPLASH_SCREEN);
+		showSplashScreen();
 	}
 
 	void GameService::initialize()
 	{
 		service_locator->initialize();
 		game_window = service_locator->getGraphicService()->getGameWindow();
+	}
+
+	void GameService::showSplashScreen() 
+	{
+		setGameState(GameState::SPLASH_SCREEN);
+		service_locator->getUIService()->showSplashScreen();
 	}
 
 	// Main Game Loop.

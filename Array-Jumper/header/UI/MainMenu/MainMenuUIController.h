@@ -1,14 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
 #include "../../header/Sound/SoundService.h"
+#include "../../header/UI/UIElement/ImageView.h"
+#include "../../header/UI/UIElement/ButtonView.h"
 
 namespace UI
 {
 	namespace MainMenu
 	{
-		//class SoundService;
-
 		class MainMenuUIController
 		{
 		private:
@@ -17,42 +16,38 @@ namespace UI
 			const float button_width = 400.f;
 			const float button_height = 140.f;
 
-			sf::RenderWindow* game_window;
+			const float play_button_y_position = 400.f;
+			const float instructions_button_y_position = 600.f;
+			const float quit_button_y_position = 800.f;
 
-			// Textures:
-			sf::Texture background_texture;
-			sf::Sprite background_sprite;
+			const float background_alpha = 85.f;
 
-			sf::Texture play_button_texture;
-			sf::Sprite play_button_sprite;
+			// UI Elements:
+			UIElement::ImageView* background_image;
+			UIElement::ButtonView* play_button;
+			UIElement::ButtonView* instructions_button;
+			UIElement::ButtonView* quit_button;
 
-			sf::Texture instructions_button_texture;
-			sf::Sprite instructions_button_sprite;
-
-			sf::Texture quit_button_texture;
-			sf::Sprite quit_button_sprite;
-
+			void createImage();
+			void createButtons();
 			void initializeBackgroundImage();
-			void scaleBackgroundImage();
-
 			void initializeButtons();
-			bool loadButtonTexturesFromFile();
-			void setButtonSprites();
+			void registerButtonCallback();
 
-			void scaleAllButttons();
-			void scaleButton(sf::Sprite* button_to_scale);
-			void positionButtons();
+			void playButtonCallback();
+			void instructionsButtonCallback();
+			void quitButtonCallback();
 
-			bool pressedMouseButton();
-			void handleButtonInteractions();
-			bool clickedButton(sf::Sprite*, sf::Vector2f);
+			void destroy();
 
 		public:
 			MainMenuUIController();
+			~MainMenuUIController();
 
 			void initialize();
 			void update();
 			void render();
+			void show();
 		};
 	}
 }

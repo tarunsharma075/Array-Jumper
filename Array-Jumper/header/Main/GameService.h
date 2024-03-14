@@ -5,7 +5,6 @@
 #include "../../header/Sound/SoundService.h"
 #include "../../header/Global/ServiceLocator.h"
 
-
 namespace Main
 {
 
@@ -28,6 +27,7 @@ namespace Main
 		sf::RenderWindow* game_window;
 
 		void initialize();
+		void showSplashScreen();
 
 	public:
 		GameService();

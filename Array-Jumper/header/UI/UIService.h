@@ -20,6 +20,7 @@ namespace UI
 		sf::RenderWindow* game_window;
 
 		void createControllers();
+		void initializeUIElements();
 		void initializeControllers();
 		void onDestroy();
 
@@ -30,5 +31,7 @@ namespace UI
 		void initialize();
 		void update();
 		void render();
+
+		void showSplashScreen();
 	};
 }
