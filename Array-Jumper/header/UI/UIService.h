@@ -15,9 +15,8 @@ namespace UI
 		SplashScreen::SplashScreenUIController* splash_screen_ui_controller;
 		MainMenu::MainMenuUIController* main_menu_ui_controller;
 		Credits::CreditsScreenUIController* credits_screen_ui_controller;
-		Instrcutions::InstrcutionsUIController* instructions_ui_controller;
+		Instructions::InstructionsUIController* instructions_ui_controller;
 
-		sf::RenderWindow* game_window;
 
 		void createControllers();
 		void initializeUIElements();

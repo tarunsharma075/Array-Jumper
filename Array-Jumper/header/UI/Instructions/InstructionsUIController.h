@@ -1,14 +1,13 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include "../../header/UI/UIElement/ImageView.h"
 #include "../../header/UI/UIElement/ButtonView.h"
 #include "../../header/UI/UIElement/TextView.h"
 
 namespace UI
 {
-	namespace Instrcutions
+	namespace Instructions
 	{
-		class InstrcutionsUIController
+		class InstructionsUIController
 		{
 		private:
 			// Constants:
@@ -19,17 +18,17 @@ namespace UI
 			const float background_alpha = 85.f;
 
 			static const int number_of_instructions = 4;
-			const float top_offset = 97.f;
-			const float text_spacing = 95.f;
+			const float top_offset = 250.f;
+			const float text_spacing = 100.f;
 			const int font_size = 50;
 
 			const sf::Color text_color = sf::Color::White;
 
-			sf::String instructions[number_of_instructions] = { "Move with 'Left' and 'Right' arrow keys",
+			sf::String instructions[number_of_instructions] = { "Move with 'Left' and 'Right' arrow key",
 																"Hold 'Space' while moving to 'JUMP'",
 																"Your player will 'JUMP' forward or backward by the value of your current cell",
 																"Reach the target cell to 'Win' the game" };
-																
+
 			UIElement::ImageView* background_image;
 			UIElement::ButtonView* menu_button;
 
@@ -48,8 +47,8 @@ namespace UI
 			void destroy();
 
 		public:
-			InstrcutionsUIController();
-			~InstrcutionsUIController();
+			InstructionsUIController();
+			~InstructionsUIController();
 
 			void initialize();
 			void update();

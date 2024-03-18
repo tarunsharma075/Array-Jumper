@@ -8,7 +8,7 @@
 
 namespace UI
 {
-    namespace Instrcutions
+    namespace Instructions
     {
         using namespace Global;
         using namespace UIElement;
@@ -16,37 +16,19 @@ namespace UI
         using namespace Graphics;
         using namespace Sound;
 
-        InstrcutionsUIController::InstrcutionsUIController()
+        InstructionsUIController::InstructionsUIController()
         {
             createButtons();
             createImage();
             createText();
         }
 
-        InstrcutionsUIController::~InstrcutionsUIController()
+        InstructionsUIController::~InstructionsUIController()
         {
             destroy();
         }
 
-        void InstrcutionsUIController::createImage()
-        {
-            background_image = new ImageView();
-        }
-
-        void InstrcutionsUIController::createButtons()
-        {
-            menu_button = new ButtonView();
-        }
-
-        void InstrcutionsUIController::createText()
-        {
-            for (int i = 0; i < number_of_instructions; i++)
-            {
-                instructions_text_list.push_back(new TextView());
-            }
-        }
-
-        void InstrcutionsUIController::initialize()
+        void InstructionsUIController::initialize()
         {
             initializeTexts();
             initializeBackgroundImage();
@@ -54,7 +36,25 @@ namespace UI
             registerButtonCallback();
         }
 
-        void InstrcutionsUIController::initializeBackgroundImage()
+        void InstructionsUIController::createImage()
+        {
+            background_image = new ImageView();
+        }
+
+        void InstructionsUIController::createButtons()
+        {
+            menu_button = new ButtonView();
+        }
+
+        void InstructionsUIController::createText()
+        {
+            for (int i = 0; i < number_of_instructions; i++)
+            {
+                instructions_text_list.push_back(new TextView());
+            }
+        }
+
+        void InstructionsUIController::initializeBackgroundImage()
         {
             sf::RenderWindow* game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
@@ -62,13 +62,13 @@ namespace UI
             background_image->setImageAlpha(background_alpha);
         }
 
-        void InstrcutionsUIController::initializeButtons()
+        void InstructionsUIController::initializeButtons()
         {
             menu_button->initialize("Menu Button", Config::menu_button_texture_path, button_width, button_height, sf::Vector2f(0, menu_button_y_position));
             menu_button->setCentreAlinged();
         }
 
-        void InstrcutionsUIController::initializeTexts()
+        void InstructionsUIController::initializeTexts()
         {
             for (int i = 0; i < instructions_text_list.size(); i++)
             {
@@ -77,18 +77,18 @@ namespace UI
             }
         }
 
-        void InstrcutionsUIController::registerButtonCallback()
+        void InstructionsUIController::registerButtonCallback()
         {
-            menu_button->registerCallbackFuntion(std::bind(&InstrcutionsUIController::menuButtonCallback, this));
+            menu_button->registerCallbackFuntion(std::bind(&InstructionsUIController::menuButtonCallback, this));
         }
 
-        void InstrcutionsUIController::menuButtonCallback()
+        void InstructionsUIController::menuButtonCallback()
         {
             ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
             GameService::setGameState(GameState::MAIN_MENU);
         }
 
-        void InstrcutionsUIController::update()
+        void InstructionsUIController::update()
         {
             background_image->update();
             menu_button->update();
@@ -99,7 +99,7 @@ namespace UI
             }
         }
 
-        void InstrcutionsUIController::render()
+        void InstructionsUIController::render()
         {
             background_image->render();
             menu_button->render();
@@ -110,7 +110,7 @@ namespace UI
             }
         }
 
-        void InstrcutionsUIController::show()
+        void InstructionsUIController::show()
         {
             background_image->show();
             menu_button->show();
@@ -121,7 +121,7 @@ namespace UI
             }
         }
 
-        void InstrcutionsUIController::destroy()
+        void InstructionsUIController::destroy()
         {
             delete (background_image);
             delete (menu_button);
