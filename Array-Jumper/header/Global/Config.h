@@ -9,6 +9,7 @@ namespace Global
         // Textures
         static const sf::String array_jumper_bg_texture_path;
         static const sf::String box_texture_path;
+        static const sf::String target_texture_path;
         static const sf::String character_texture_path;
         static const sf::String instructions_button_texture_path;
         static const sf::String letter_one_texture_path;
