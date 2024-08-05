@@ -23,6 +23,7 @@ namespace Event
 		ButtonState right_arrow_button_state;
 		ButtonState A_button_state;
 		ButtonState D_button_state;
+		ButtonState Space_buttonPressed;
 
 		bool isGameWindowOpen();
 		bool gameWindowWasClosed();
@@ -46,5 +47,6 @@ namespace Event
 		bool pressedDKey();
 		bool pressedLeftMouseButton();
 		bool pressedRightMouseButton();
+		bool heldSpaceKey();
 	};
 }
