@@ -13,7 +13,9 @@ namespace Player {
 		m_currentState = _playerCurrentState;
 	}
     
-	
+	PlayerState  PlayerModel::GetPlayerState() {
+		return m_currentState;
+	}
 	
 	
 
