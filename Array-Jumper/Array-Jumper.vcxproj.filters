@@ -45,6 +45,7 @@
     <ClCompile Include="source\UI\UIElement\TextView.cpp" />
     <ClCompile Include="source\UI\UIElement\UIView.cpp" />
     <ClCompile Include="source\Player\PlayerModel.cpp" />
+    <ClCompile Include="SOURCE\PLAYER\PLAYERVIEW.CPP" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\Main\GameService.h">
@@ -76,6 +77,7 @@
     <ClInclude Include="header\UI\UIElement\TextView.h" />
     <ClInclude Include="header\UI\UIElement\UIView.h" />
     <ClInclude Include="header\Player\PlayerModel.h" />
+    <ClInclude Include="header\Player\PlayerView.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\sounds\background_music.mp3" />

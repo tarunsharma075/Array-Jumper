@@ -18,7 +18,7 @@ namespace Player {
 		void SetPlayerPosition(float _positionChange);
 		float GetPlayerPosition();
 		void SetPlayerState(PlayerState _playerCurrentState);
-		
+		PlayerState GetPlayerState();
 	
 		
 	};
