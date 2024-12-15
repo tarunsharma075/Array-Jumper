@@ -6,14 +6,8 @@
 
 namespace Global
 {
-	using namespace Graphics;
-	using namespace Event;
-	using namespace Sound;
-	using namespace UI;
-	using namespace Main;
-	using namespace Global;
-	using namespace Player;
-	using namespace  Level;
+	
+	
 
 	ServiceLocator::ServiceLocator()
 	{
@@ -54,7 +48,7 @@ namespace Global
 		graphic_service->update();
 		event_service->update();
 		ui_service->update();
-		if (GameService::getGameState() == GameState::GAMEPLAY)
+		if (Main::GameService::getGameState() == Main::GameState::GAMEPLAY)
 		{
 			player_service->Update();
 			level_service->Update();
@@ -66,7 +60,7 @@ namespace Global
 	{
 		graphic_service->render();
 		ui_service->render();
-		if (GameService::getGameState() == GameState::GAMEPLAY)
+		if (Main::GameService::getGameState() == Main::GameState::GAMEPLAY)
 		{
 			player_service->Render();
 			level_service->Render();
