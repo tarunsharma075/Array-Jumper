@@ -133,6 +133,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Level\level_controller.cpp" />
+    <ClCompile Include="source\Level\level_model.cpp" />
+    <ClCompile Include="source\Level\level_service.cpp" />
+    <ClCompile Include="source\Level\level_view.cpp" />
     <ClCompile Include="source\Player\player_controller.cpp" />
     <ClCompile Include="source\Player\player_service.cpp" />
     <ClCompile Include="source\Player\player_view.cpp" />
@@ -158,6 +162,10 @@
   <ItemGroup>
     <ClInclude Include="header\Global\Config.h" />
     <ClInclude Include="header\Event\EventService.h" />
+    <ClInclude Include="header\Level\level_controller.h" />
+    <ClInclude Include="header\Level\level_model.h" />
+    <ClInclude Include="header\Level\level_service.h" />
+    <ClInclude Include="header\Level\level_view.h" />
     <ClInclude Include="header\Player\player_controller.h" />
     <ClInclude Include="header\Player\player_model.h" />
     <ClInclude Include="header\Player\player_service.h" />

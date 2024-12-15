@@ -12,7 +12,7 @@ namespace Global
     private:
         Graphics::GraphicService* graphic_service;
         Event::EventService* event_service;
-        Sound::SoundService* sound_service;
+       Sound::SoundService* sound_service;
         UI::UIService* ui_service;
         Player::PlayerService* player_service;
 
@@ -34,5 +34,6 @@ namespace Global
         Sound::SoundService* getSoundService();
         UI::UIService* getUIService();
         Player::PlayerService* getPlayerService();
+        
     };
 }
