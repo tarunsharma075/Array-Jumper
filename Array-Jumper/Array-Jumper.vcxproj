@@ -133,12 +133,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Player\player_controller.cpp" />
+    <ClCompile Include="source\Player\player_service.cpp" />
+    <ClCompile Include="source\Player\player_view.cpp" />
     <ClCompile Include="source\Global\Config.cpp" />
     <ClCompile Include="source\Event\EventService.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="source\Global\ServiceLocator.cpp" />
-    <ClCompile Include="source\Player\PlayerModel.cpp" />
-    <ClCompile Include="SOURCE\PLAYER\PLAYERVIEW.CPP" />
+    <ClCompile Include="source\Player\player_model.cpp" />
     <ClCompile Include="source\Sound\SoundService.cpp" />
     <ClCompile Include="source\Main\GameService.cpp" />
     <ClCompile Include="source\Graphics\GraphicService.cpp" />
@@ -156,8 +158,10 @@
   <ItemGroup>
     <ClInclude Include="header\Global\Config.h" />
     <ClInclude Include="header\Event\EventService.h" />
-    <ClInclude Include="header\Player\PlayerModel.h" />
-    <ClInclude Include="header\Player\PlayerView.h" />
+    <ClInclude Include="header\Player\player_controller.h" />
+    <ClInclude Include="header\Player\player_model.h" />
+    <ClInclude Include="header\Player\player_service.h" />
+    <ClInclude Include="header\Player\player_view.h" />
     <ClInclude Include="header\Sound\SoundService.h" />
     <ClInclude Include="header\Main\GameService.h" />
     <ClInclude Include="header\Graphics\GraphicService.h" />
