@@ -45,7 +45,7 @@ namespace Global
         SoundService* getSoundService();
       UIService* getUIService();
        PlayerService* getPlayerService();
-       LevelController * getLevelService();
+       LevelService *getLevelService();
         
     };
 }
