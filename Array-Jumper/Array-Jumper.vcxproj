@@ -162,6 +162,8 @@
   <ItemGroup>
     <ClInclude Include="header\Global\Config.h" />
     <ClInclude Include="header\Event\EventService.h" />
+    <ClInclude Include="header\Level\BlockType.h" />
+    <ClInclude Include="header\Level\level_data.h" />
     <ClInclude Include="header\Level\level_controller.h" />
     <ClInclude Include="header\Level\level_model.h" />
     <ClInclude Include="header\Level\level_service.h" />

@@ -1,6 +1,7 @@
 #include"../../header/Level/level_controller.h"
 #include"../../header/Level/level_model.h"
 #include"../../header/Level/level_view.h"
+#include"../../header/Level/BlockType.h"
 namespace Level {
 	LevelController::LevelController()
 	{
@@ -21,5 +22,9 @@ namespace Level {
 	void LevelController::Render()
 	{
 		m_levlViewForLevelController->Render();
+	}
+	BlocKType LevelController::getCurrentBoxValue(int currentValue)
+	{
+		return m_levlModelForLevelController->getCurrentBoxValue(currentValue);
 	}
 }
