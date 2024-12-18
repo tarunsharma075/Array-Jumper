@@ -8,8 +8,8 @@ namespace Level {
 		float box_height;
 		float box_spacing;
 
-		float box_spacing_percentage = 0.3f;
-		float bottom_offset = 200.f;
+		float box_spacing_percentage = 0.1f;
+		float bottom_offset = 150.f;
 	};
 	
 	class LevelModel {

@@ -2,6 +2,7 @@
 #include"../../header/Global/ServiceLocator.h"
 #include"../../header/Global/Config.h"
 #include"../../header/Level/level_controller.h"
+#include"../../header/Level/level_data.h"
 #include<iostream>
 using namespace Global;
 namespace Level {
@@ -53,9 +54,12 @@ namespace Level {
 	void LevelView::drawLevel()
 	{
 		m_backgroundImage->render();
-		DrawBox(Vector2f(0, 0));
-		BlocKType blockTypeToDraw = m_levelController->getCurrentBoxValue(0);
-		DrawboxValue(Vector2f(0, 0), blockTypeToDraw);
+		for (int i = 0; i < LevelData::NUMBER_OF_BOXES; i++) {
+			sf::Vector2f position = CalculateBoxPosition(i);
+			BlocKType blockToDraw = m_levelController->getCurrentBoxValue(i);
+			DrawBox(position);
+			DrawboxValue(position, blockToDraw);
+	   }
 	}
 	void LevelView::deleteImages()
 	{
@@ -76,8 +80,9 @@ namespace Level {
 			std::cout << "No We cant Calculate the size of boxed";
 		}
 		else {
-			box_dimension.box_width = 300.f;
-			box_dimension.box_height = 300.f;
+			
+			CalculateBoxWidthHeight();
+			CalculateBoxSpacing();
 		}
 	}
 	UI::UIElement::ImageView* LevelView::GetBoxOverLayImage(BlocKType overlayImage)
@@ -109,6 +114,29 @@ namespace Level {
 		UI::UIElement::ImageView*  image = GetBoxOverLayImage(box_value);
 		image->setPosition(position);
 		image->render();
+	}
+	void LevelView::CalculateBoxWidthHeight()
+	{
+		float scrrenWidth = static_cast<float>(m_gameWindowForLevelView->getSize().x);
+
+		int numOfBox = LevelData::NUMBER_OF_BOXES;
+		int numOfGaps = numOfBox + 1;
+		float totalSpaceByGaps = box_dimension.box_width * static_cast<float>(numOfGaps);
+
+		float totalSpace = numOfBox + totalSpaceByGaps;
+
+		box_dimension.box_width = scrrenWidth / (totalSpace);
+		box_dimension.box_height = box_dimension.box_width;
+	}
+	void LevelView::CalculateBoxSpacing()
+	{
+		box_dimension.box_spacing = box_dimension.box_spacing_percentage * box_dimension.box_width;
+	}
+	sf::Vector2f LevelView::CalculateBoxPosition(int index)
+	{
+		float xPosition = box_dimension.box_spacing + static_cast<float>(index) * (box_dimension.box_width + box_dimension.box_spacing);
+		float yposition = static_cast<float>(m_gameWindowForLevelView->getSize().y) - box_dimension.box_height - box_dimension.bottom_offset;
+		return sf::Vector2f(xPosition, yposition);
 	}
 	LevelView::LevelView(LevelController* controller)
 	{
