@@ -27,4 +27,8 @@ namespace Level {
 	{
 		return m_levlModelForLevelController->getCurrentBoxValue(currentValue);
 	}
+	BoxDimensions LevelController::GetBoxDimensions()
+	{
+		return m_levlViewForLevelController->getBoxDimensions();
+	}
 }

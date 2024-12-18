@@ -1,5 +1,7 @@
 #pragma once
 #include"../../header/UI/UIElement/ImageView.h"
+#include"../../header/Level/level_model.h"
+
 namespace Player {
 	class PlayerController;
 	enum class PlayerState;
@@ -27,5 +29,7 @@ namespace Player {
 		void initialize();
 		void update();
 		void render();
+		Level::BoxDimensions currentBoxDimensions();
+;
 	};
 }

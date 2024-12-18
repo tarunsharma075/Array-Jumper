@@ -121,7 +121,7 @@ namespace Level {
 
 		int numOfBox = LevelData::NUMBER_OF_BOXES;
 		int numOfGaps = numOfBox + 1;
-		float totalSpaceByGaps = box_dimension.box_width * static_cast<float>(numOfGaps);
+		float totalSpaceByGaps = box_dimension.box_spacing_percentage * static_cast<float>(numOfGaps);
 
 		float totalSpace = numOfBox + totalSpaceByGaps;
 
@@ -163,5 +163,9 @@ namespace Level {
 	void LevelView::Render()
 	{
 		drawLevel();
+	}
+	BoxDimensions LevelView::getBoxDimensions()
+	{
+		return box_dimension;
 	}
 }
