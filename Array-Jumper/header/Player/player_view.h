@@ -22,6 +22,7 @@ namespace Player {
 		sf::Vector2f calulcatePlayerPosition();
 		PlayerController* m_playerController;
 		Level::BoxDimensions currentBoxDimensions;
+		
 
 	public:
 		PlayerView(PlayerController* controller);

@@ -25,4 +25,8 @@ namespace Level {
 	{
 		return m_playerControllerForPlayerService->GetBoxDimensions();
 	}
+	Level::BlocKType LevelService::GetBoxValue(int currrentPosition)
+	{
+		return m_playerControllerForPlayerService->getCurrentBoxValue(currrentPosition);
+	}
 }

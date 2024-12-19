@@ -14,5 +14,6 @@ namespace Level {
 		void Update();
 		void Render();
 		BoxDimensions GetBoxDimension();
+		Level::BlocKType GetBoxValue(int currrentPosition);
 	};
  }
