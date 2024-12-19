@@ -12,6 +12,7 @@ namespace Player {
 		sf::RenderWindow* m_gameWindow;
 		float m_playerHeight;
 		float m_playerWidth;
+		int currrentPosition;
 
 		void InitializePlayerImage(); //Initialize player_image 
 		void drawPlayer(); //Called every frame to render the sprite on the screen
@@ -20,7 +21,7 @@ namespace Player {
 		void updatePlayerPosition(); //Updates the Player Sprite's position on each frame
 		sf::Vector2f calulcatePlayerPosition();
 		PlayerController* m_playerController;
-	
+		Level::BoxDimensions currentBoxDimensions;
 
 	public:
 		PlayerView(PlayerController* controller);
@@ -29,7 +30,8 @@ namespace Player {
 		void initialize();
 		void update();
 		void render();
-		Level::BoxDimensions currentBoxDimensions();
+		int  GetPlayerPosition();
+		void SetPlayerPosition(int newPosition);
 ;
 	};
 }

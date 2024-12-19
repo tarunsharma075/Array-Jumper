@@ -25,7 +25,7 @@ namespace Player {
 	}
 	void PlayerView::update()
 	{
-
+		updatePlayerPosition();
 	}
 	void PlayerView::render()
 	{
@@ -38,10 +38,21 @@ namespace Player {
 		}
 	}
 
+	int  PlayerView::GetPlayerPosition()
+	{
+		return currrentPosition;
+	}
+
+	void PlayerView::SetPlayerPosition(int newPosition)
+	{
+		currrentPosition = newPosition;
+	}
+
 	void PlayerView::CalculatePlayerDimensions()
 	{
-		m_playerHeight = 1000.f;
-		m_playerWidth = 1000.f;
+		currentBoxDimensions = ServiceLocator::getInstance()->getLevelService()->GetBoxDimension();
+		m_playerWidth = currentBoxDimensions.box_width;
+		m_playerHeight = currentBoxDimensions.box_height;
 	}
 
 	void PlayerView::updatePlayerPosition()
@@ -51,7 +62,9 @@ namespace Player {
 
 	sf::Vector2f PlayerView::calulcatePlayerPosition()
 	{
-		return sf::Vector2f();
+		float xPosition = currentBoxDimensions.box_spacing + static_cast<float>(m_playerController->GetPlayerPosistion());
+		float yPosition = static_cast<float>(m_gameWindow->getSize().y) - currentBoxDimensions.box_height - currentBoxDimensions.bottom_offset - m_playerHeight;
+		return sf::Vector2f(xPosition, yPosition);
 	}
 
 	void PlayerView::InitializePlayerImage()

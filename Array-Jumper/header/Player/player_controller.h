@@ -20,5 +20,6 @@ namespace Player {
 
 		PlayerState GetPlayerState();
 		void SetPlayerState(PlayerState newPlayerState);
+		int GetPlayerPosistion();
 	};
 }

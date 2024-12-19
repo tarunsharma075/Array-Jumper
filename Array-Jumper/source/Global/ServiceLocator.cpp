@@ -41,6 +41,7 @@ namespace Global
 		ui_service->initialize();
 		player_service->Initialize();
 		level_service->Initialize();
+		player_service->Initialize();
 	}
 
 	void ServiceLocator::update()
