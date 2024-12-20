@@ -21,4 +21,8 @@ namespace Level {
 	{
 		m_playerControllerForPlayerService->Render();
 	}
+	BoxDimensions LevelService::GetBoxDimesnion()
+	{
+		return m_playerControllerForPlayerService->GetBoxDimension();
+	}
 }

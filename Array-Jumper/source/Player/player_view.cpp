@@ -25,6 +25,7 @@ namespace Player {
 	}
 	void PlayerView::update()
 	{
+		updatePlayerPosition();
 
 	}
 	void PlayerView::render()
@@ -51,7 +52,7 @@ namespace Player {
 
 	sf::Vector2f PlayerView::calulcatePlayerPosition()
 	{
-		return sf::Vector2f();
+		return sf::Vector2f(0,0);
 	}
 
 	void PlayerView::InitializePlayerImage()
