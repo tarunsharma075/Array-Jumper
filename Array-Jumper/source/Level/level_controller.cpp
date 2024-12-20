@@ -15,16 +15,16 @@ namespace Level {
 	void LevelController::Initialize()
 	{
 
-		m_levlViewForLevelController->Initialize();
+		m_levlViewForLevelController->initilaize();
 	}
 	void LevelController::Update()
 	{
-		m_levlViewForLevelController->Update();
+		m_levlViewForLevelController->update();
 	
 	}
 	void LevelController::Render()
 	{
-		m_levlViewForLevelController->Render();
+		m_levlViewForLevelController->render();
 	}
 	BlocKType LevelController::getCurrentBoxValue(int currentValue)
 	{
@@ -33,6 +33,6 @@ namespace Level {
 	BoxDimensions LevelController::GetBoxDimension()
 	{
 		
-		return m_levlViewForLevelController->GetBoxDimension();
+		return m_levlViewForLevelController->getBoxDimension();
 	}
 }

@@ -44,8 +44,7 @@ namespace Player {
 		currentBoxDimension = ServiceLocator::getInstance()->getLevelService()->GetBoxDimension();
 		m_playerHeight = currentBoxDimension.box_height;
 		m_playerWidth = currentBoxDimension.box_width;
-		std::cout<<"in the playerdimesion height " << m_playerHeight << std::endl;
-		std::cout <<"in the playerdimesion width " << m_playerWidth << std::endl;
+
 	}
 
 	void PlayerView::updatePlayerPosition()
