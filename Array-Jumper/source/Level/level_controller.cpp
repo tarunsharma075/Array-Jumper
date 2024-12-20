@@ -13,6 +13,7 @@ namespace Level {
 	}
 	void LevelController::Initialize()
 	{
+
 		m_levlViewForLevelController->Initialize();
 	}
 	void LevelController::Update()

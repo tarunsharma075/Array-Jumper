@@ -52,11 +52,15 @@ namespace Level {
 	void LevelView::drawLevel()
 	{
 		m_backgroundImage->render();
-		DrawBox(Vector2f(0, 0));
-		
-		BlocKType blockToDraw = m_levelController->getCurrentBoxValue(0);
-		DrawboxValue(Vector2f(0, 0), blockToDraw);
-		
+
+		for (int i = 0; i < LevelData::NUMBER_OF_BOXES; i++) {
+
+			sf::Vector2f position = CalculateBoxPosition(i);
+			DrawBox(position);
+
+			BlocKType blockToDraw = m_levelController->getCurrentBoxValue(i);
+			DrawboxValue(position, blockToDraw);
+		}
 		
 	}
 	void LevelView::deleteImages()
@@ -77,8 +81,8 @@ namespace Level {
 			std::cout << "No We cant Calculate the size of boxed";
 		}
 		else {
-			box_dimension.box_width = 300.f;
-			box_dimension.box_height = 300.f;
+			CalculateBoxWidthHeight();
+			CalculateBoxSpacing();
 		}
 	}
 	UI::UIElement::ImageView* LevelView::GetBoxOverLayImage(BlocKType overlayImage)
@@ -116,6 +120,28 @@ namespace Level {
 		ImageView* image = GetBoxOverLayImage(box_value);
 		image->setPosition(position);
 		image->render();
+	}
+	void LevelView::CalculateBoxWidthHeight()
+	{
+		float screenWidth = static_cast<float>(m_gameWindowForLevelView->getSize().x);
+		int numOfBoxes = LevelData::NUMBER_OF_BOXES;
+		int numOfGaps = numOfBoxes + 1;
+
+		float totalSpaceByGaps =  box_dimension.box_spacing_percentage * static_cast<float> (numOfGaps);
+		float totalSpace = numOfBoxes + totalSpaceByGaps;
+
+		box_dimension.box_width = screenWidth / (totalSpace);
+		box_dimension.box_height = box_dimension.box_width;
+	}
+	void LevelView::CalculateBoxSpacing()
+	{
+		box_dimension.box_spacing = box_dimension.box_spacing_percentage * box_dimension.box_width;
+	}
+	sf::Vector2f LevelView::CalculateBoxPosition(int index)
+	{
+		float xPosition = box_dimension.box_spacing + static_cast<float>(index) * (box_dimension.box_width + box_dimension.box_spacing);
+		float yPosition = static_cast<float>(m_gameWindowForLevelView->getSize().y) - box_dimension.box_height - box_dimension.bottom_offset;
+		return Vector2f(xPosition,yPosition);
 	}
 	LevelView::LevelView(LevelController* controller)
 	{
