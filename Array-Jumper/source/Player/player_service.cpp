@@ -23,6 +23,11 @@ namespace Player
 		playercontroller->Render();
 	}
 
+	int PlayerService::GetPlayerPosition()
+	{
+		return playercontroller->GetPlayerPosition();
+	}
+
 	
 
 	void PlayerService::destroy() { delete(playercontroller); }

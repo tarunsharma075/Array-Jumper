@@ -39,6 +39,10 @@ namespace Player {
 	{
 		m_playerModelForPlayerController->SetPlayerState(newPlayerState);
 	}
+	int PlayerController::GetPlayerPosition()
+	{
+		return m_playerModelForPlayerController->GetPosition();
+	}
 	void PlayerController::Destroy()
 	{
 		delete(m_playerModelForPlayerController);

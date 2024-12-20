@@ -1,5 +1,5 @@
 #pragma once
-
+#include"../../header/Level/level_model.h"
 namespace Level {
 
 	class LevelModel;
@@ -17,5 +17,6 @@ namespace Level {
 			void Update();
 			void Render();
 			BlocKType getCurrentBoxValue(int currentValue);
+			BoxDimensions GetBoxDimension();
 	};
 }

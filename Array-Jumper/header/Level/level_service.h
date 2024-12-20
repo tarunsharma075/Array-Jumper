@@ -1,4 +1,5 @@
 #pragma once
+#include"../../header/Level/level_model.h"
 namespace Level {
 	class LevelController;
 	class LevelService {
@@ -12,5 +13,6 @@ namespace Level {
 		void Initialize();
 		void Update();
 		void Render();
+		BoxDimensions GetBoxDimension();
 	};
  }

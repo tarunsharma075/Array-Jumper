@@ -19,7 +19,7 @@ namespace Player {
 	}
 	void PlayerView::initialize()
 	{
-		std::cout << "image is set";
+	
 		m_gameWindow = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 		LoadPlayer();
 	}
@@ -41,8 +41,10 @@ namespace Player {
 
 	void PlayerView::CalculatePlayerDimensions()
 	{
-		m_playerHeight = 1000.f;
-		m_playerWidth = 1000.f;
+		currentBoxDimension = ServiceLocator::getInstance()->getLevelService()->GetBoxDimension();
+		m_playerHeight = currentBoxDimension.box_height;
+		m_playerWidth = currentBoxDimension.box_width;
+
 	}
 
 	void PlayerView::updatePlayerPosition()
@@ -52,7 +54,9 @@ namespace Player {
 
 	sf::Vector2f PlayerView::calulcatePlayerPosition()
 	{
-		return sf::Vector2f(0,0);
+		float Xposition = currentBoxDimension.box_spacing + static_cast<float>(m_playerController->GetPlayerPosition()) * (currentBoxDimension.box_width + currentBoxDimension.box_spacing);
+		float Yposition = static_cast<float>(m_gameWindow->getSize().y) - currentBoxDimension.box_height - currentBoxDimension.bottom_offset - m_playerHeight;
+		return sf::Vector2f(Xposition,Yposition);
 	}
 
 	void PlayerView::InitializePlayerImage()
@@ -61,7 +65,7 @@ namespace Player {
 		 m_playerImage->initialize(Config::character_texture_path,
 			m_playerWidth,
 			m_playerHeight,
-			sf::Vector2f(100,200));
+			sf::Vector2f(0,0));
 	}
 	void PlayerView::drawPlayer()
 	{

@@ -1,5 +1,7 @@
 #include"../../header/Level/level_controller.h"
 #include"../../header/Level/level_service.h"
+#include"../../header/Level/level_model.h"
+#include<iostream>
 namespace Level {
 	LevelService::LevelService()
 	{
@@ -21,8 +23,13 @@ namespace Level {
 	{
 		m_playerControllerForPlayerService->Render();
 	}
-	BoxDimensions LevelService::GetBoxDimesnion()
+
+	BoxDimensions LevelService::GetBoxDimension()
 	{
+		
+	
 		return m_playerControllerForPlayerService->GetBoxDimension();
+		
 	}
+	
 }
