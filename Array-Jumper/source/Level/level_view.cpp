@@ -2,6 +2,7 @@
 #include"../../header/Global/ServiceLocator.h"
 #include"../../header/Global/Config.h"
 #include"../../header/Level/level_controller.h"
+
 #include<iostream>
 #include<iostream>
 using namespace std;
@@ -134,8 +135,8 @@ namespace Level {
 
 		box_dimension.box_width = screenWidth / (totalSpace);
 		box_dimension.box_height = box_dimension.box_width;
-		cout << "Here the box width is " << box_dimension.box_width;
-		cout << "Here the box height is " << box_dimension.box_height;
+		cout << " the box width inc calculateboxwith and height function is " << box_dimension.box_width<<endl;
+		cout << "the box height inc calculateboxwith and height function is " << box_dimension.box_height<<endl;
 	}
 	void LevelView::CalculateBoxSpacing()
 	{
@@ -143,8 +144,11 @@ namespace Level {
 	}
 	sf::Vector2f LevelView::CalculateBoxPosition(int index)
 	{
+		cout << "in the boxspacing the " << box_dimension.box_height << endl;
+		cout << "in the boxposition the " << box_dimension.box_width << endl;
 		float xPosition = box_dimension.box_spacing + static_cast<float>(index) * (box_dimension.box_width + box_dimension.box_spacing);
 		float yPosition = static_cast<float>(m_gameWindowForLevelView->getSize().y) - box_dimension.box_height - box_dimension.bottom_offset;
+		
 		return Vector2f(xPosition,yPosition);
 	}
 	LevelView::LevelView(LevelController* controller)
@@ -176,7 +180,8 @@ namespace Level {
 	}
 	BoxDimensions LevelView::GetBoxDimension()
 	{
-		
+		cout << "the value of the boxheight in levelcpp" << box_dimension.box_height<<endl;
+		cout<<"the value of the box width is in levelcpp"<<box_dimension.box_width<<endl;
 		return box_dimension;
 	}
 }
