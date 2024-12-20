@@ -3,6 +3,8 @@
 #include"../../header/Global/Config.h"
 #include"../../header/Level/level_controller.h"
 #include<iostream>
+#include<iostream>
+using namespace std;
 using namespace UI::UIElement;
 using namespace Global;
 namespace Level {
@@ -132,6 +134,8 @@ namespace Level {
 
 		box_dimension.box_width = screenWidth / (totalSpace);
 		box_dimension.box_height = box_dimension.box_width;
+		cout << "Here the box width is " << box_dimension.box_width;
+		cout << "Here the box height is " << box_dimension.box_height;
 	}
 	void LevelView::CalculateBoxSpacing()
 	{
@@ -169,5 +173,10 @@ namespace Level {
 	{
 		drawLevel();
 		
+	}
+	BoxDimensions LevelView::GetBoxDimension()
+	{
+		
+		return box_dimension;
 	}
 }

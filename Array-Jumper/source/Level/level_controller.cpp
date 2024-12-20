@@ -2,6 +2,7 @@
 #include"../../header/Level/level_model.h"
 #include"../../header/Level/level_view.h"
 #include"../../header/Level/BlockType.h"
+#include<iostream>
 namespace Level {
 	LevelController::LevelController()
 	{
@@ -19,6 +20,7 @@ namespace Level {
 	void LevelController::Update()
 	{
 		m_levlViewForLevelController->Update();
+	
 	}
 	void LevelController::Render()
 	{
@@ -27,5 +29,10 @@ namespace Level {
 	BlocKType LevelController::getCurrentBoxValue(int currentValue)
 	{
 		return m_levlModelForLevelController->getCurrentBoxValue(currentValue);
+	}
+	BoxDimensions LevelController::GetBoxDimension()
+	{
+		
+		return m_levlViewForLevelController->GetBoxDimension();
 	}
 }

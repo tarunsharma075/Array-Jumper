@@ -24,5 +24,7 @@ namespace Player
 		void Initialize();
 		void Update();
 		void Render();
+		int GetCurrentPsoition();
+		void SetPlayerPosition(int newPosiition);
 	};
 }

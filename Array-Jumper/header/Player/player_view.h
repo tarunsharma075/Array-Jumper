@@ -1,5 +1,6 @@
 #pragma once
 #include"../../header/UI/UIElement/ImageView.h"
+#include"../../header/Level/level_model.h"
 namespace Player {
 	class PlayerController;
 	enum class PlayerState;
@@ -18,7 +19,7 @@ namespace Player {
 		void updatePlayerPosition(); //Updates the Player Sprite's position on each frame
 		sf::Vector2f calulcatePlayerPosition();
 		PlayerController* m_playerController;
-	
+		Level::BoxDimensions currentBoxDimension;
 
 	public:
 		PlayerView(PlayerController* controller);
@@ -27,5 +28,6 @@ namespace Player {
 		void initialize();
 		void update();
 		void render();
+		
 	};
 }

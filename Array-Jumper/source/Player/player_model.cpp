@@ -30,4 +30,12 @@ namespace Player {
 	void PlayerModel::Render()
 	{
 	}
+	int PlayerModel::GetCurrentPsoition()
+	{
+		return m_current_position;
+	}
+	void PlayerModel::SetPlayerPosition(int newPosiition)
+	{
+		 m_current_position = newPosiition;
+	}
 }
