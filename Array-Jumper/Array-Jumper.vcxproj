@@ -168,6 +168,7 @@
     <ClInclude Include="header\Level\level_model.h" />
     <ClInclude Include="header\Level\level_service.h" />
     <ClInclude Include="header\Level\level_view.h" />
+    <ClInclude Include="header\Player\movement_direction.h" />
     <ClInclude Include="header\Player\player_controller.h" />
     <ClInclude Include="header\Player\player_model.h" />
     <ClInclude Include="header\Player\player_service.h" />

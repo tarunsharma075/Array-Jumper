@@ -51,8 +51,9 @@ namespace Global
 		ui_service->update();
 		if (Main::GameService::getGameState() == Main::GameState::GAMEPLAY)
 		{
-			player_service->Update();
+			
 			level_service->Update();
+			player_service->Update();
 		}
 	}
 	

@@ -19,12 +19,12 @@ namespace Player
 		PlayerState getPlayerState();
 		void SetPlayerState(PlayerState new_player_state);
 
-		int GetPosition();
+		
 		void SetPlayerCurrentPosition(int new_position);
 		void Initialize();
 		void Update();
 		void Render();
 		int GetCurrentPsoition();
-		void SetPlayerPosition(int newPosiition);
+		
 	};
 }

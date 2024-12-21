@@ -92,6 +92,7 @@
     <ClInclude Include="header\Level\level_service.h" />
     <ClInclude Include="header\Level\BlockType.h" />
     <ClInclude Include="header\Level\level_data.h" />
+    <ClInclude Include="header\Player\movement_direction.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\sounds\background_music.mp3" />

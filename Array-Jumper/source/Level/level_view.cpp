@@ -124,8 +124,6 @@ namespace Level {
 
     BoxDimensions LevelView::getBoxDimension()
     {
-        cout << "height" << box_dimension.box_height;
-        cout << "width" << box_dimension.box_width;
 
         return box_dimension;
     }

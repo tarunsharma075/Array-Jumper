@@ -1,4 +1,6 @@
 #pragma once
+#include"../../header/Player/movement_direction.h"
+#include"../../header/Event/EventService.h"
 namespace Player {
 	class PlayerModel;
 	class PlayerView;
@@ -21,5 +23,9 @@ namespace Player {
 		PlayerState GetPlayerState();
 		void SetPlayerState(PlayerState newPlayerState);
 		int GetPlayerPosition();
+		void Move(MoveMentDirection direction);
+		bool IsPositionValid(int targetpsoition);
+		Event::EventService* eventService;
+		void ReadInput();
 	};
 }

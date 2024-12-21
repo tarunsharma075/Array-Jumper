@@ -13,10 +13,7 @@ namespace Player {
 	{
 		m_PlayerState = newPlayerState;
 	}
-	int PlayerModel::GetPosition()
-	{
-		return m_current_position;
-	}
+	
 	void PlayerModel::SetPlayerCurrentPosition(int newPosition)
 	{
 		m_current_position = newPosition;
@@ -34,8 +31,5 @@ namespace Player {
 	{
 		return m_current_position;
 	}
-	void PlayerModel::SetPlayerPosition(int newPosiition)
-	{
-		 m_current_position = newPosiition;
-	}
+	
 }
